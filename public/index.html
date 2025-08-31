@@ -13,13 +13,14 @@
   <style>
     html { 
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #f8fafc;
       min-height: 100vh;
     }
     
     body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #f8fafc;
       min-height: 100vh;
+      color: #1e293b;
     }
     
     /* Mobile-first touch targets */
@@ -39,8 +40,8 @@
     .mobile-menu {
       transform: translateX(-100%);
       transition: transform 0.3s ease;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.95);
+      background: white;
+      border-right: 1px solid #e2e8f0;
     }
     .mobile-menu.open {
       transform: translateX(0);
@@ -52,8 +53,8 @@
       bottom: 20px;
       right: 20px;
       z-index: 50;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+      background: #3b82f6;
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
     }
     
     /* Tab content */
@@ -62,86 +63,86 @@
     
     /* Tab buttons */
     .tab-btn {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: white;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
       transition: all 0.3s ease;
     }
     .tab-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: #e2e8f0;
       transform: translateY(-1px);
     }
     .tab-btn.active {
-      background: rgba(255, 255, 255, 0.9);
-      color: #667eea;
+      background: #3b82f6;
+      color: white;
       font-weight: 600;
     }
     
     /* Glass morphism cards */
     .glass-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
     
     /* Header glass effect */
     .header-glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
     }
     
     /* Content cards */
     .content-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      background: white;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      color: #1e293b;
     }
     
     /* Progress bars */
     .progress-gradient {
-      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      background: #3b82f6;
     }
     
     /* Checkbox styling */
     input[type="checkbox"]:checked {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-color: #667eea;
+      background: #3b82f6;
+      border-color: #3b82f6;
     }
     
     /* Button gradients */
     .btn-gradient {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #3b82f6;
       color: white;
       border: none;
       transition: all 0.3s ease;
     }
     .btn-gradient:hover {
+      background: #2563eb;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
     }
     
     /* Download buttons */
     .download-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #3b82f6;
       color: white;
       border: none;
       transition: all 0.3s ease;
     }
     .download-btn:hover {
+      background: #2563eb;
       transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
     }
     
     /* Water glasses */
     .water-glass {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #3b82f6;
       transition: all 0.3s ease;
     }
     .water-glass:hover {
+      background: #2563eb;
       transform: scale(1.1);
     }
     
@@ -154,7 +155,7 @@
     }
   </style>
 </head>
-<body class="text-white min-h-screen">
+<body class="text-gray-900 min-h-screen bg-gray-50">
   
   <!-- Mobile Menu Overlay -->
   <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden no-print"></div>
@@ -212,36 +213,36 @@
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-30 header-glass">
+  <header class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-white/20 rounded-lg no-print transition-all">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-gray-100 rounded-lg no-print transition-all">
+          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-sm text-white grid place-content-center font-bold text-lg">TS</div>
+        <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 grid place-content-center font-bold text-lg">TS</div>
         <div>
-          <h1 class="text-xl font-semibold leading-tight">Tina's Lean & Strong Program</h1>
-          <p class="text-sm text-white/80">Interactive Tracker • Week <span id="currentWeek">1</span> of 12</p>
+          <h1 class="text-xl font-semibold leading-tight text-gray-900">Tina's Lean & Strong Program</h1>
+          <p class="text-sm text-gray-600">Interactive Tracker • Week <span id="currentWeek">1</span> of 12</p>
         </div>
       </div>
       
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex gap-2 no-print overflow-x-auto">
-        <button onclick="switchTab('tracker')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="tracker">Today's Tracker</button>
-        <button onclick="switchTab('program')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="program">Program</button>
-        <button onclick="switchTab('tools')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="tools">Tools</button>
-        <button onclick="switchTab('weekly-plan')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="weekly-plan">Weekly Plan</button>
-        <button onclick="switchTab('quick-view')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="quick-view">Quick View</button>
-        <button onclick="switchTab('calendar')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="calendar">Calendar</button>
-        <button onclick="switchTab('grocery')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="grocery">Grocery</button>
-        <button onclick="switchTab('trackers')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="trackers">Trackers</button>
-        <button onclick="switchTab('downloads')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="downloads">Downloads</button>
+        <button onclick="switchTab('tracker')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="tracker">Today's Tracker</button>
+        <button onclick="switchTab('program')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="program">Program</button>
+        <button onclick="switchTab('tools')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="tools">Tools</button>
+        <button onclick="switchTab('weekly-plan')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="weekly-plan">Weekly Plan</button>
+        <button onclick="switchTab('quick-view')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="quick-view">Quick View</button>
+        <button onclick="switchTab('calendar')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="calendar">Calendar</button>
+        <button onclick="switchTab('grocery')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="grocery">Grocery</button>
+        <button onclick="switchTab('trackers')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="trackers">Trackers</button>
+        <button onclick="switchTab('downloads')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="downloads">Downloads</button>
       </nav>
       
       <div class="flex gap-2 no-print">
-        <button onclick="window.print()" class="inline-flex items-center gap-2 rounded-xl bg-white/20 hover:bg-white/30 px-4 py-2 text-sm font-medium touch-target transition-all">Print</button>
+        <button onclick="window.print()" class="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium touch-target transition-all">Print</button>
       </div>
     </div>
   </header>
@@ -1166,8 +1167,8 @@
   </button>
 
   <!-- Footer -->
-  <footer class="border-t border-white/20 mt-12 glass-card">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-white/80 flex items-center justify-between">
+  <footer class="border-t border-gray-200 mt-12 bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600 flex items-center justify-between">
       <span>Interactive Fitness Tracker • Week <span id="footerWeek">1</span> of 12</span>
       <span>General guidance only — consult a professional before starting.</span>
     </div>
