@@ -599,105 +599,303 @@
       </div>
     </div>
     
-    <!-- Today's Tracker Tab -->
+    <!-- Trackers Tab -->
     <div id="tracker" class="tab-content">
-      <!-- Today's Focus -->
-      <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2">✅ Today's Focus</h2>
-        <p class="text-gray-700 text-lg" id="todayName">Loading today's workout...</p>
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2">📊 Trackers</h1>
+        <p class="text-gray-700 text-lg">Print and check off daily meals & workouts</p>
       </div>
 
-      <!-- Today's Workout -->
-      <div class="content-card p-8 mb-8 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
+      <!-- Weekly Tracking Sheet -->
+      <div class="content-card p-6 mb-8 bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-blue-900">📋 Weekly Tracking Sheet</h2>
+              <p class="text-sm text-blue-700">Weekly completion: <span id="weeklyProgress">0%</span></p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-green-900">💪 Today's Workout</h3>
+          <button onclick="window.print()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium no-print">
+            🖨 Print this section
+          </button>
         </div>
-        <div id="todayWorkout" class="space-y-4">
-          <!-- Workout content will be populated by JavaScript -->
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-blue-200 rounded-full h-3 mb-6">
+          <div id="weeklyProgressBar" class="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+
+        <!-- Tracking Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+                <th class="text-left p-3 font-medium border border-blue-400">Day</th>
+                <th class="text-left p-3 font-medium border border-blue-400">Workout</th>
+                <th class="text-center p-3 font-medium border border-blue-400">Breakfast</th>
+                <th class="text-center p-3 font-medium border border-blue-400">Lunch</th>
+                <th class="text-center p-3 font-medium border border-blue-400">Dinner</th>
+                <th class="text-center p-3 font-medium border border-blue-400">Snacks</th>
+                <th class="text-left p-3 font-medium border border-blue-400">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <!-- Monday -->
+              <tr class="hover:bg-blue-50 transition-colors">
+                <td class="p-3 font-medium text-blue-700 bg-blue-50 border border-gray-200">Mon</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Push (Chest/Shoulders/Triceps)</div>
+                  <div class="text-xs text-gray-600">Incline DB Press, Lat Pulldown, Goblet Squat</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="mon" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="mon" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="mon" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="mon" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="mon" data-notes>
+                </td>
+              </tr>
+
+              <!-- Tuesday -->
+              <tr class="hover:bg-green-50 transition-colors">
+                <td class="p-3 font-medium text-green-700 bg-green-50 border border-gray-200">Tue</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Pull (Back/Biceps)</div>
+                  <div class="text-xs text-gray-600">Lat Pulldown, Seated Row, DB Curls</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="tue" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="tue" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="tue" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="tue" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="tue" data-notes>
+                </td>
+              </tr>
+
+              <!-- Wednesday -->
+              <tr class="hover:bg-purple-50 transition-colors">
+                <td class="p-3 font-medium text-purple-700 bg-purple-50 border border-gray-200">Wed</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Legs & Core</div>
+                  <div class="text-xs text-gray-600">Step-ups, Hip Thrust, Leg Press, Kickbacks</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="wed" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="wed" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="wed" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="wed" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="wed" data-notes>
+                </td>
+              </tr>
+
+              <!-- Thursday -->
+              <tr class="hover:bg-teal-50 transition-colors">
+                <td class="p-3 font-medium text-teal-700 bg-teal-50 border border-gray-200">Thu</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Conditioning & Core</div>
+                  <div class="text-xs text-gray-600">30-40min walk/cycle, Dead bug, Side plank</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="thu" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="thu" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="thu" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="thu" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="thu" data-notes>
+                </td>
+              </tr>
+
+              <!-- Friday -->
+              <tr class="hover:bg-red-50 transition-colors">
+                <td class="p-3 font-medium text-red-700 bg-red-50 border border-gray-200">Fri</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Push/Pull Hybrid (Hypertrophy)</div>
+                  <div class="text-xs text-gray-600">Seated DB Press, Chest Row, Cable Fly, Curls</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="fri" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="fri" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="fri" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="fri" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="fri" data-notes>
+                </td>
+              </tr>
+
+              <!-- Saturday -->
+              <tr class="hover:bg-yellow-50 transition-colors">
+                <td class="p-3 font-medium text-yellow-700 bg-yellow-50 border border-gray-200">Sat</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Rest / Active Recovery</div>
+                  <div class="text-xs text-gray-600">Easy walk, yoga, mobility work</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="sat" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="sat" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="sat" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="sat" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="sat" data-notes>
+                </td>
+              </tr>
+
+              <!-- Sunday -->
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="p-3 font-medium text-gray-700 bg-gray-50 border border-gray-200">Sun</td>
+                <td class="p-3 border border-gray-200">
+                  <div class="text-sm font-medium text-gray-900 mb-1">Rest / Recovery</div>
+                  <div class="text-xs text-gray-600">Complete rest or light stretching</div>
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-green-600 rounded border-2 border-green-300 focus:ring-green-500" data-day="sun" data-meal="breakfast">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-blue-600 rounded border-2 border-blue-300 focus:ring-blue-500" data-day="sun" data-meal="lunch">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-2 border-purple-300 focus:ring-purple-500" data-day="sun" data-meal="dinner">
+                </td>
+                <td class="p-3 text-center border border-gray-200">
+                  <input type="checkbox" class="w-5 h-5 text-orange-600 rounded border-2 border-orange-300 focus:ring-orange-500" data-day="sun" data-meal="snacks">
+                </td>
+                <td class="p-3 border border-gray-200">
+                  <input type="text" placeholder="Add notes..." class="w-full text-xs p-1 border border-gray-200 rounded focus:ring-1 focus:ring-blue-500 focus:border-transparent" data-day="sun" data-notes>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Auto-save notice and goal -->
+        <div class="mt-6 p-4 bg-blue-100 rounded-lg border border-blue-200">
+          <div class="flex items-start gap-3">
+            <div class="flex-shrink-0">
+              <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="text-sm">
+              <p class="text-blue-800 font-medium mb-1">💾 Auto-Save: Your progress is automatically saved to your browser's local storage.</p>
+              <p class="text-blue-700">🎯 Goal: Check off each meal as you complete it throughout the week.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Daily Habits -->
-      <div class="content-card p-8 mb-8 bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
+      <!-- Snack Options -->
+      <div class="content-card p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200">
         <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-blue-900">🎯 Daily Habits</h3>
-        </div>
-        <div class="space-y-6">
-          <div class="habit-item" data-habit="workout">
-            <label class="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded">
-              <span class="text-gray-900">Complete Workout</span>
-            </label>
-          </div>
-          
-          <div class="habit-item" data-habit="protein">
-            <label class="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded">
-              <span class="text-gray-900">Hit Protein Target (110-130g)</span>
-            </label>
-          </div>
-          
-          <div class="habit-item" data-habit="water">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-gray-900">Water Intake</span>
-              <span class="text-sm text-gray-600"><span id="waterCount">0</span>/12 glasses</span>
-            </div>
-            <div class="flex gap-1 mb-3">
-              <div id="waterGlasses" class="flex gap-1 flex-wrap">
-                <!-- Water glasses will be generated by JavaScript -->
-              </div>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div id="waterProgress" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-            </div>
-          </div>
-          
-          <div class="habit-item" data-habit="sleep">
-            <label class="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded">
-              <span class="text-gray-900">7-8 Hours Sleep</span>
-            </label>
-          </div>
-          
-          <div class="habit-item" data-habit="vegetables">
-            <label class="flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" class="w-5 h-5 text-blue-600 rounded">
-              <span class="text-gray-900">5+ Servings Vegetables</span>
-            </label>
-          </div>
+          <h2 class="text-2xl font-bold text-orange-900">🍎 Snack Options</h2>
         </div>
         
-        <div class="mt-8 pt-6 border-t border-gray-200">
-          <div class="flex items-center justify-between mb-3">
-            <span class="font-medium text-gray-900">Daily Progress</span>
-            <span id="habitProgress" class="text-sm text-gray-600">0/5 complete</span>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-semibold text-orange-800 mb-3">Protein-Rich Snacks</h3>
+            <ul class="space-y-2 text-sm text-orange-700">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Protein shake (25g, post-workout)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                2 boiled eggs (12g)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Beef jerky (10-15g)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Greek yogurt cup (20g)
+              </li>
+            </ul>
           </div>
-          <div class="w-full bg-gray-200 rounded-full h-3">
-            <div id="habitProgressBar" class="bg-blue-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+          
+          <div>
+            <h3 class="font-semibold text-orange-800 mb-3">Healthy Options</h3>
+            <ul class="space-y-2 text-sm text-orange-700">
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Cottage cheese (20g)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Almonds/walnuts (~6g per oz)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Apple with almond butter
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                Carrots with hummus
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- Daily Notes -->
-      <div class="content-card p-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-6">Daily Notes</h3>
-        <textarea 
-          id="dailyNotes" 
-          placeholder="How are you feeling today? Any observations about your workout, energy, or progress..."
-          class="w-full h-32 p-4 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-        ></textarea>
-        <div class="flex justify-between items-center mt-2">
-          <span class="text-xs text-gray-500">Auto-saves as you type</span>
+      <!-- Disclaimer -->
+      <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <p class="text-sm text-yellow-800">
+          <strong>Disclaimer:</strong> This plan is general fitness guidance. Consult a healthcare professional before starting any new diet or training program, especially if you have medical conditions.
+        </p>
+      </div>
           <span id="notesSaved" class="text-xs text-green-600 opacity-0">Saved ✓</span>
         </div>
       </div>
@@ -2293,6 +2491,84 @@
       link.click();
     }
 
+    // Weekly Tracking System
+    function initializeWeeklyTracking() {
+      // Load saved tracking data
+      const savedTracking = localStorage.getItem('weeklyTracking');
+      if (savedTracking) {
+        const trackingData = JSON.parse(savedTracking);
+        
+        // Restore checkboxes
+        Object.keys(trackingData.meals || {}).forEach(key => {
+          const checkbox = document.querySelector(`input[data-day="${key.split('-')[0]}"][data-meal="${key.split('-')[1]}"]`);
+          if (checkbox) {
+            checkbox.checked = trackingData.meals[key];
+          }
+        });
+        
+        // Restore notes
+        Object.keys(trackingData.notes || {}).forEach(day => {
+          const noteInput = document.querySelector(`input[data-day="${day}"][data-notes]`);
+          if (noteInput) {
+            noteInput.value = trackingData.notes[day];
+          }
+        });
+      }
+      
+      // Add event listeners for checkboxes and notes
+      document.querySelectorAll('input[data-meal]').forEach(checkbox => {
+        checkbox.addEventListener('change', saveTrackingData);
+      });
+      
+      document.querySelectorAll('input[data-notes]').forEach(noteInput => {
+        noteInput.addEventListener('input', saveTrackingData);
+      });
+      
+      updateWeeklyProgress();
+    }
+    
+    function saveTrackingData() {
+      const trackingData = {
+        meals: {},
+        notes: {}
+      };
+      
+      // Save meal checkboxes
+      document.querySelectorAll('input[data-meal]').forEach(checkbox => {
+        const day = checkbox.getAttribute('data-day');
+        const meal = checkbox.getAttribute('data-meal');
+        const key = `${day}-${meal}`;
+        trackingData.meals[key] = checkbox.checked;
+      });
+      
+      // Save notes
+      document.querySelectorAll('input[data-notes]').forEach(noteInput => {
+        const day = noteInput.getAttribute('data-day');
+        trackingData.notes[day] = noteInput.value;
+      });
+      
+      localStorage.setItem('weeklyTracking', JSON.stringify(trackingData));
+      updateWeeklyProgress();
+    }
+    
+    function updateWeeklyProgress() {
+      const totalCheckboxes = document.querySelectorAll('input[data-meal]').length;
+      const checkedBoxes = document.querySelectorAll('input[data-meal]:checked').length;
+      const percentage = totalCheckboxes > 0 ? Math.round((checkedBoxes / totalCheckboxes) * 100) : 0;
+      
+      // Update progress display
+      const progressElement = document.getElementById('weeklyProgress');
+      const progressBarElement = document.getElementById('weeklyProgressBar');
+      
+      if (progressElement) {
+        progressElement.textContent = `${percentage}%`;
+      }
+      
+      if (progressBarElement) {
+        progressBarElement.style.width = `${percentage}%`;
+      }
+    }
+
     // Initialize app
     document.addEventListener('DOMContentLoaded', function() {
       loadState();
@@ -2303,6 +2579,7 @@
       updateHabits();
       updateWaterTracker();
       updateGroceryProgress();
+      initializeWeeklyTracking();
       
       // Restore new tab states
       if (appState.newTabData) {
