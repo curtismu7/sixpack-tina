@@ -214,7 +214,7 @@
         <span class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">🛒</span>
         Grocery
       </button>
-      <button onclick="switchTab('trackers')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+      <button onclick="switchTab('tracker')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
         <span class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">📊</span>
         Trackers
       </button>
@@ -301,7 +301,7 @@
           <span class="hidden sm:inline">🛒 Grocery</span>
           <span class="sm:hidden">🛒</span>
         </button>
-        <button onclick="switchTab('trackers')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="trackers">
+        <button onclick="switchTab('tracker')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tracker">
           <span class="hidden sm:inline">📈 Trackers</span>
           <span class="sm:hidden">📈</span>
         </button>
@@ -525,7 +525,7 @@
           <p class="text-xs text-gray-500 mt-1">Shopping list</p>
         </button>
 
-        <button onclick="switchTab('trackers')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-teal-300">
+        <button onclick="switchTab('tracker')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-teal-300">
           <div class="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mx-auto mb-2">
             <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
@@ -912,6 +912,93 @@
                 Carrots with hummus
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Tracking Section -->
+      <div class="content-card p-6 mb-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-purple-900">📏 Progress Tracking</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Weekly Measurements -->
+          <div class="p-4 bg-white rounded-lg border border-purple-200">
+            <h3 class="text-lg font-semibold mb-4 text-purple-800 flex items-center gap-2">
+              <span class="text-lg">📊</span>
+              Weekly Measurements
+            </h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Weight (lbs)</label>
+                <input type="number" id="weight-input" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter weight">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Waist (inches)</label>
+                <input type="number" id="waist-input" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter waist measurement">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Hips (inches)</label>
+                <input type="number" id="hips-input" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter hip measurement">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Body Fat %</label>
+                <input type="number" id="bodyfat-input" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter body fat %">
+              </div>
+              <button onclick="saveMeasurements()" class="w-full mt-3 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium">
+                💾 Save Measurements
+              </button>
+            </div>
+          </div>
+          
+          <!-- Weekly Goals -->
+          <div class="p-4 bg-white rounded-lg border border-purple-200">
+            <h3 class="text-lg font-semibold mb-4 text-purple-800 flex items-center gap-2">
+              <span class="text-lg">🎯</span>
+              Weekly Goals
+            </h3>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-workouts" class="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-purple-500" onchange="updateGoalProgress()">
+                <span>Complete all scheduled workouts</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-protein" class="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-purple-500" onchange="updateGoalProgress()">
+                <span>Hit protein target daily</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-water" class="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-purple-500" onchange="updateGoalProgress()">
+                <span>Drink 2-3L water daily</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-sleep" class="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-purple-500" onchange="updateGoalProgress()">
+                <span>Get 7-8 hours sleep nightly</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-vegetables" class="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-purple-500" onchange="updateGoalProgress()">
+                <span>Eat 5+ servings vegetables daily</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-photos" class="w-5 h-5 text-pink-600 rounded focus:ring-2 focus:ring-purple-500" onchange="updateGoalProgress()">
+                <span>Take progress photos</span>
+              </label>
+            </div>
+            
+            <div class="mt-6 p-4 bg-slate-50 rounded-2xl">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-medium">Weekly Goals</span>
+                <span id="tracker-progress-count" class="text-sm text-slate-500">0/6 complete</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="tracker-progress-bar" class="bg-purple-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1919,76 +2006,7 @@
       </div>
     </div>
 
-    <!-- Trackers Tab -->
-    <div id="trackers" class="tab-content">
-      <div class="content-card p-6">
-        <h2 class="text-2xl font-semibold mb-6">Progress Trackers</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Weekly Measurements</h3>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium mb-1">Weight (lbs)</label>
-                <input type="number" id="weight-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter weight">
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">Waist (inches)</label>
-                <input type="number" id="waist-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter waist measurement">
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">Hips (inches)</label>
-                <input type="number" id="hips-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter hip measurement">
-              </div>
-              <div>
-                <label class="block text-sm font-medium mb-1">Body Fat %</label>
-                <input type="number" id="bodyfat-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter body fat %">
-              </div>
-            </div>
-          </div>
-          
-          <div>
-            <h3 class="text-lg font-semibold mb-4">Weekly Goals</h3>
-            <div class="space-y-3">
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="week-workouts" class="w-5 h-5 text-pink-600 rounded">
-                <span>Complete all scheduled workouts</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="week-protein" class="w-5 h-5 text-pink-600 rounded">
-                <span>Hit protein target daily</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="week-water" class="w-5 h-5 text-pink-600 rounded">
-                <span>Drink 2-3L water daily</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="week-sleep" class="w-5 h-5 text-pink-600 rounded">
-                <span>Get 7-8 hours sleep nightly</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="week-vegetables" class="w-5 h-5 text-pink-600 rounded">
-                <span>Eat 5+ servings vegetables daily</span>
-              </label>
-              <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="week-photos" class="w-5 h-5 text-pink-600 rounded">
-                <span>Take progress photos</span>
-              </label>
-            </div>
-            
-            <div class="mt-6 p-4 bg-slate-50 rounded-2xl">
-              <div class="flex justify-between items-center mb-2">
-                <span class="font-medium">Weekly Goals</span>
-                <span id="tracker-progress-count" class="text-sm text-slate-500">0/6 complete</span>
-              </div>
-              <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="tracker-progress-bar" class="bg-purple-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Downloads Tab -->
     <div id="downloads" class="tab-content">
@@ -2594,6 +2612,94 @@
         progressBarElement.style.width = `${percentage}%`;
       }
     }
+    
+    // Measurements Functions
+    function saveMeasurements() {
+      const measurements = {
+        weight: document.getElementById('weight-input')?.value || '',
+        waist: document.getElementById('waist-input')?.value || '',
+        hips: document.getElementById('hips-input')?.value || '',
+        bodyfat: document.getElementById('bodyfat-input')?.value || '',
+        date: new Date().toISOString().split('T')[0]
+      };
+      
+      // Save to localStorage
+      const savedMeasurements = JSON.parse(localStorage.getItem('bodyMeasurements') || '[]');
+      savedMeasurements.push(measurements);
+      localStorage.setItem('bodyMeasurements', JSON.stringify(savedMeasurements));
+      
+      // Show success message
+      alert('✅ Measurements saved successfully!');
+    }
+    
+    function loadMeasurements() {
+      const savedMeasurements = JSON.parse(localStorage.getItem('bodyMeasurements') || '[]');
+      if (savedMeasurements.length > 0) {
+        const latest = savedMeasurements[savedMeasurements.length - 1];
+        
+        if (document.getElementById('weight-input')) {
+          document.getElementById('weight-input').value = latest.weight || '';
+        }
+        if (document.getElementById('waist-input')) {
+          document.getElementById('waist-input').value = latest.waist || '';
+        }
+        if (document.getElementById('hips-input')) {
+          document.getElementById('hips-input').value = latest.hips || '';
+        }
+        if (document.getElementById('bodyfat-input')) {
+          document.getElementById('bodyfat-input').value = latest.bodyfat || '';
+        }
+      }
+    }
+    
+    // Goal Progress Functions
+    function updateGoalProgress() {
+      const goalCheckboxes = [
+        'week-workouts', 'week-protein', 'week-water', 
+        'week-sleep', 'week-vegetables', 'week-photos'
+      ];
+      
+      const checkedGoals = goalCheckboxes.filter(id => {
+        const checkbox = document.getElementById(id);
+        return checkbox && checkbox.checked;
+      }).length;
+      
+      const totalGoals = goalCheckboxes.length;
+      const percentage = Math.round((checkedGoals / totalGoals) * 100);
+      
+      // Update progress display
+      const countElement = document.getElementById('tracker-progress-count');
+      const barElement = document.getElementById('tracker-progress-bar');
+      
+      if (countElement) {
+        countElement.textContent = `${checkedGoals}/${totalGoals} complete`;
+      }
+      
+      if (barElement) {
+        barElement.style.width = `${percentage}%`;
+      }
+      
+      // Save goal states
+      const goalStates = {};
+      goalCheckboxes.forEach(id => {
+        const checkbox = document.getElementById(id);
+        if (checkbox) {
+          goalStates[id] = checkbox.checked;
+        }
+      });
+      localStorage.setItem('weeklyGoals', JSON.stringify(goalStates));
+    }
+    
+    function loadGoalStates() {
+      const savedGoals = JSON.parse(localStorage.getItem('weeklyGoals') || '{}');
+      Object.keys(savedGoals).forEach(id => {
+        const checkbox = document.getElementById(id);
+        if (checkbox) {
+          checkbox.checked = savedGoals[id];
+        }
+      });
+      updateGoalProgress();
+    }
 
     // Initialize app
     document.addEventListener('DOMContentLoaded', function() {
@@ -2606,6 +2712,8 @@
       updateWaterTracker();
       updateGroceryProgress();
       initializeWeeklyTracking();
+      loadMeasurements();
+      loadGoalStates();
       
       // Restore new tab states
       if (appState.newTabData) {
