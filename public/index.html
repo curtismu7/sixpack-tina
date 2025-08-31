@@ -746,9 +746,79 @@
 
     <!-- Calendar Tab -->
     <div id="calendar" class="tab-content">
-      <div class="content-card p-6">
+      <!-- Overview Header -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold text-green-600 mb-6">Calendar</h2>
+        
+        <!-- Calendar Overview Cards -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+          <!-- Training Schedule Card -->
+          <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-green-800">Training Schedule</h3>
+            </div>
+            <p class="text-sm text-green-700 mb-3">7-day rotation with rest days</p>
+            <ul class="text-sm text-green-700 space-y-1">
+              <li>• Mon: Full Body (Push)</li>
+              <li>• Tue: Cardio & Core</li>
+              <li>• Wed: Lower & Glutes</li>
+              <li>• Thu: Active Recovery</li>
+              <li>• Fri: Upper Body</li>
+              <li>• Sat: Optional Conditioning</li>
+              <li>• Sun: Rest</li>
+            </ul>
+          </div>
+
+          <!-- Progress Tracking Card -->
+          <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-blue-800">Progress Tracking</h3>
+            </div>
+            <p class="text-sm text-blue-700 mb-3">Track daily habits & workouts</p>
+            <ul class="text-sm text-blue-700 space-y-1">
+              <li>• Workout completion</li>
+              <li>• Intensity levels (1-10)</li>
+              <li>• Daily habits tracking</li>
+              <li>• Personal notes</li>
+              <li>• Progress indicators</li>
+            </ul>
+          </div>
+
+          <!-- Google Calendar Integration Card -->
+          <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-purple-800">Google Calendar</h3>
+            </div>
+            <p class="text-sm text-purple-700 mb-3">Sync with your calendar</p>
+            <button id="googleCalendarBtn" class="w-full px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 text-sm font-medium">
+              Connect Google Calendar
+            </button>
+            <div id="googleCalendarStatus" class="mt-2 text-sm text-purple-700 hidden">
+              ✓ Connected to Google Calendar
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar Navigation -->
+      <div class="bg-white border border-gray-200 rounded-2xl p-6 mb-6">
         <div class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-bold text-gray-900">Fitness Calendar</h2>
+          <h3 id="currentMonth" class="text-xl font-semibold text-gray-900">January 2024</h3>
           <div class="flex gap-2">
             <button id="prevMonth" class="p-2 hover:bg-gray-100 rounded-lg">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -764,34 +834,15 @@
           </div>
         </div>
 
-        <!-- Google Calendar Integration -->
-        <div class="mb-6 p-4 bg-blue-50 rounded-lg">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="font-medium text-blue-900">Google Calendar Sync</h3>
-              <p class="text-sm text-blue-700">Connect to sync your fitness events with Google Calendar</p>
-            </div>
-            <button id="googleCalendarBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-              Connect Google Calendar
-            </button>
-          </div>
-          <div id="googleCalendarStatus" class="mt-2 text-sm text-blue-700 hidden">
-            ✓ Connected to Google Calendar
-          </div>
-        </div>
-
         <!-- Calendar Header -->
-        <div class="mb-4">
-          <h3 id="currentMonth" class="text-xl font-semibold text-gray-900 mb-4">January 2024</h3>
-          <div class="grid grid-cols-7 gap-1">
-            <div class="text-center font-medium p-3 text-gray-600">Sun</div>
-            <div class="text-center font-medium p-3 text-gray-600">Mon</div>
-            <div class="text-center font-medium p-3 text-gray-600">Tue</div>
-            <div class="text-center font-medium p-3 text-gray-600">Wed</div>
-            <div class="text-center font-medium p-3 text-gray-600">Thu</div>
-            <div class="text-center font-medium p-3 text-gray-600">Fri</div>
-            <div class="text-center font-medium p-3 text-gray-600">Sat</div>
-          </div>
+        <div class="grid grid-cols-7 gap-1 mb-2">
+          <div class="text-center font-medium p-3 text-gray-600">Sun</div>
+          <div class="text-center font-medium p-3 text-gray-600">Mon</div>
+          <div class="text-center font-medium p-3 text-gray-600">Tue</div>
+          <div class="text-center font-medium p-3 text-gray-600">Wed</div>
+          <div class="text-center font-medium p-3 text-gray-600">Thu</div>
+          <div class="text-center font-medium p-3 text-gray-600">Fri</div>
+          <div class="text-center font-medium p-3 text-gray-600">Sat</div>
         </div>
 
         <!-- Calendar Grid -->
@@ -800,38 +851,38 @@
         </div>
 
         <!-- Legend -->
-        <div class="flex flex-wrap gap-4 text-sm mb-6">
+        <div class="flex flex-wrap gap-4 text-sm">
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-red-500 rounded"></div>
-            <span>Full Body</span>
+            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+            <span class="text-gray-600">Full Body</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-blue-500 rounded"></div>
-            <span>Cardio</span>
+            <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+            <span class="text-gray-600">Cardio</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-green-500 rounded"></div>
-            <span>Lower Body</span>
+            <div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+            <span class="text-gray-600">Lower Body</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-yellow-500 rounded"></div>
-            <span>Upper Body</span>
+            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+            <span class="text-gray-600">Upper Body</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-purple-500 rounded"></div>
-            <span>Progress Note</span>
+            <div class="w-3 h-3 bg-orange-500 rounded-full"></div>
+            <span class="text-gray-600">Notes</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-4 h-4 bg-gray-400 rounded"></div>
-            <span>Rest Day</span>
+            <div class="w-3 h-3 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-600">Rest Day</span>
           </div>
         </div>
       </div>
 
       <!-- Selected Day Details -->
-      <div id="dayDetails" class="content-card p-6 mt-6 hidden">
-        <div class="flex items-center justify-between mb-4">
-          <h3 id="selectedDate" class="text-xl font-bold text-gray-900">January 1, 2024</h3>
+      <div id="dayDetails" class="bg-white border border-gray-200 rounded-2xl p-6 hidden">
+        <div class="flex items-center justify-between mb-6">
+          <h3 id="selectedDate" class="text-xl font-semibold text-gray-900">January 1, 2024</h3>
           <button id="closeDayDetails" class="p-2 hover:bg-gray-100 rounded-lg">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -839,76 +890,84 @@
           </button>
         </div>
 
-        <!-- Workout for the day -->
-        <div class="mb-6">
-          <h4 class="font-medium text-gray-900 mb-2">Scheduled Workout</h4>
-          <div id="dayWorkout" class="p-3 bg-gray-50 rounded-lg text-gray-700">
-            No workout scheduled
+        <!-- Day Overview Cards -->
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <!-- Workout Card -->
+          <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+            <h4 class="font-medium text-green-800 mb-2">Scheduled Workout</h4>
+            <div id="dayWorkout" class="text-green-700 font-medium">
+              No workout scheduled
+            </div>
+          </div>
+
+          <!-- Quick Actions Card -->
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <h4 class="font-medium text-blue-800 mb-3">Quick Actions</h4>
+            <div class="flex gap-2">
+              <button id="addToGoogleCalendar" class="px-3 py-1 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+                Add to Calendar
+              </button>
+              <button id="exportDay" class="px-3 py-1 bg-gray-600 text-white rounded-lg hover:bg-gray-700 text-sm">
+                Export
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Progress Notes -->
-        <div class="mb-6">
-          <h4 class="font-medium text-gray-900 mb-2">Progress Notes</h4>
+        <!-- Progress Notes Card -->
+        <div class="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-6">
+          <h4 class="font-medium text-purple-800 mb-3">Progress Notes</h4>
           <textarea 
             id="dayNotes" 
             placeholder="Add notes about your workout, how you felt, progress made, etc..."
-            class="w-full h-24 p-3 border border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full h-24 p-3 border border-purple-200 rounded-lg resize-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white"
           ></textarea>
           <div class="flex justify-between items-center mt-2">
-            <span class="text-xs text-gray-500">Auto-saves as you type</span>
+            <span class="text-xs text-purple-600">Auto-saves as you type</span>
             <span id="notesSavedIndicator" class="text-xs text-green-600 opacity-0">Saved ✓</span>
           </div>
         </div>
 
-        <!-- Progress Tracking -->
+        <!-- Progress Tracking Cards -->
         <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <h4 class="font-medium text-gray-900 mb-3">Workout Completion</h4>
-            <div class="space-y-2">
+          <!-- Workout Completion Card -->
+          <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+            <h4 class="font-medium text-green-800 mb-3">Workout Completion</h4>
+            <div class="space-y-3">
               <label class="flex items-center gap-3 cursor-pointer">
-                <input type="checkbox" id="workoutCompleted" class="w-4 h-4 text-blue-600 rounded">
-                <span class="text-gray-700">Workout Completed</span>
+                <input type="checkbox" id="workoutCompleted" class="w-4 h-4 text-green-600 rounded">
+                <span class="text-green-700">Workout Completed</span>
               </label>
-              <div class="ml-7">
-                <label class="block text-sm text-gray-600 mb-1">Intensity (1-10)</label>
-                <input type="range" id="workoutIntensity" min="1" max="10" value="5" class="w-full">
-                <div class="flex justify-between text-xs text-gray-500">
+              <div>
+                <label class="block text-sm text-green-700 mb-2">Intensity Level</label>
+                <input type="range" id="workoutIntensity" min="1" max="10" value="5" class="w-full accent-green-600">
+                <div class="flex justify-between text-xs text-green-600 mt-1">
                   <span>Easy</span>
-                  <span id="intensityValue">5</span>
+                  <span id="intensityValue" class="font-medium">5</span>
                   <span>Max</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div>
-            <h4 class="font-medium text-gray-900 mb-3">Daily Habits</h4>
-            <div class="space-y-2">
+          <!-- Daily Habits Card -->
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <h4 class="font-medium text-blue-800 mb-3">Daily Habits</h4>
+            <div class="space-y-3">
               <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" id="proteinTarget" class="w-4 h-4 text-blue-600 rounded">
-                <span class="text-gray-700">Hit Protein Target</span>
+                <span class="text-blue-700">Hit Protein Target</span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" id="waterTarget" class="w-4 h-4 text-blue-600 rounded">
-                <span class="text-gray-700">Adequate Hydration</span>
+                <span class="text-blue-700">Adequate Hydration</span>
               </label>
               <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" id="sleepTarget" class="w-4 h-4 text-blue-600 rounded">
-                <span class="text-gray-700">Good Sleep (7-8h)</span>
+                <span class="text-blue-700">Good Sleep (7-8h)</span>
               </label>
             </div>
           </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex gap-3 mt-6">
-          <button id="addToGoogleCalendar" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-            Add to Google Calendar
-          </button>
-          <button id="exportDay" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">
-            Export Day
-          </button>
         </div>
       </div>
     </div>
@@ -1358,13 +1417,13 @@
 
     // Workout Schedule
     const workoutSchedule = {
-      0: { type: 'rest', name: 'Rest Day', color: 'bg-gray-400' },
-      1: { type: 'full-body', name: 'Full Body (Light)', color: 'bg-red-500' },
-      2: { type: 'cardio', name: 'Conditioning & Core', color: 'bg-blue-500' },
-      3: { type: 'lower', name: 'Lower & Glutes (Light)', color: 'bg-green-500' },
-      4: { type: 'recovery', name: 'Active Recovery', color: 'bg-gray-400' },
-      5: { type: 'upper', name: 'Upper (Light)', color: 'bg-yellow-500' },
-      6: { type: 'optional', name: 'Optional Conditioning', color: 'bg-purple-500' }
+      0: { type: 'rest', name: 'Rest Day', color: 'bg-gray-400', dotColor: 'bg-gray-400' },
+      1: { type: 'full-body', name: 'Full Body (Push)', color: 'bg-green-500', dotColor: 'bg-green-500' },
+      2: { type: 'cardio', name: 'Conditioning & Core', color: 'bg-blue-500', dotColor: 'bg-blue-500' },
+      3: { type: 'lower', name: 'Lower & Glutes', color: 'bg-purple-500', dotColor: 'bg-purple-500' },
+      4: { type: 'recovery', name: 'Active Recovery', color: 'bg-gray-400', dotColor: 'bg-gray-400' },
+      5: { type: 'upper', name: 'Upper Body', color: 'bg-yellow-500', dotColor: 'bg-yellow-500' },
+      6: { type: 'optional', name: 'Optional Conditioning', color: 'bg-orange-500', dotColor: 'bg-orange-500' }
     };
 
     // Initialize calendar
@@ -1418,14 +1477,16 @@
         const hasProgress = calendarState.progress[dateKey];
         
         dayElement.innerHTML = `
-          <div class="font-medium text-gray-900">${day}</div>
-          <div class="text-xs mt-1">
+          <div class="font-medium text-gray-900 mb-1">${day}</div>
+          <div class="text-xs">
             <div class="flex items-center gap-1 mb-1">
-              <div class="w-2 h-2 ${workout.color} rounded-full"></div>
-              <span class="text-gray-600 truncate">${workout.name}</span>
+              <div class="w-2 h-2 ${workout.dotColor} rounded-full flex-shrink-0"></div>
+              <span class="text-gray-600 truncate text-xs">${workout.name}</span>
             </div>
-            ${hasNotes ? '<div class="text-purple-600">📝</div>' : ''}
-            ${hasProgress?.workoutCompleted ? '<div class="text-green-600">✓</div>' : ''}
+            <div class="flex gap-1">
+              ${hasNotes ? '<div class="text-orange-500 text-xs">📝</div>' : ''}
+              ${hasProgress?.workoutCompleted ? '<div class="text-green-500 text-xs">✓</div>' : ''}
+            </div>
           </div>
         `;
         
