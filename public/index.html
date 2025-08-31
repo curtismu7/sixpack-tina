@@ -150,6 +150,10 @@
       </div>
     </div>
     <div class="p-4 space-y-3 max-h-96 overflow-y-auto">
+      <button onclick="switchTab('dashboard')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-green-400 to-teal-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">📊</span>
+        Overview
+      </button>
       <button onclick="switchTab('tracker')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
         <span class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">T</span>
         Today's Tracker
@@ -207,6 +211,7 @@
       
       <!-- Tab Navigation -->
       <nav class="flex gap-1 overflow-x-auto no-print">
+        <button onclick="switchTab('dashboard')" class="tab-btn" data-tab="dashboard">Overview</button>
         <button onclick="switchTab('tracker')" class="tab-btn" data-tab="tracker">Today's Tracker</button>
         <button onclick="switchTab('program')" class="tab-btn" data-tab="program">Program</button>
         <button onclick="switchTab('tools')" class="tab-btn" data-tab="tools">Tools</button>
@@ -223,8 +228,276 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 py-6">
     
+    <!-- Dashboard Tab -->
+    <div id="dashboard" class="tab-content active">
+      <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Overview</h1>
+        <p class="text-gray-600">Your fitness journey at a glance</p>
+      </div>
+
+      <!-- Overview Cards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <!-- Training Split Card -->
+        <div class="content-card p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Training Split</h3>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">5 days/week: 4 lifting + 1 conditioning & core</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span>Mon: Push</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <span>Tue: Pull</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span>Wed: Legs & Core</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
+              <span>Thu: Conditioning & Core</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+              <span>Fri: Push/Pull Hybrid</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+              <span>Sat: Active Recovery</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+              <span>Sun: Rest</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nutrition Targets Card -->
+        <div class="content-card p-6 bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Nutrition Targets</h3>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">~2,400 kcal • 190-200g protein/day</p>
+          <div class="space-y-3 text-sm">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span class="font-medium">Breakfast daily:</span>
+              </div>
+              <p class="text-gray-600 ml-4">eggs + Greek yogurt (no egg whites)</p>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span class="font-medium">50-60g protein per main meal</span>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span class="font-medium">Carbs higher on lift days, lower on rest days</span>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span class="font-medium">Hydration:</span>
+              </div>
+              <p class="text-gray-600 ml-4">3-4L/day • Sleep: 7-8h</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools Card -->
+        <div class="content-card p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900">Tools</h3>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">Use Downloads or Print each section</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span>Weekly plan & quick views</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span>Grocery checklist</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span>Trackers (weekly / 4-week / 12-week)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <span>Calendar (4-week minimalist)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Navigation -->
+      <div class="grid md:grid-cols-6 gap-4 mb-8">
+        <button onclick="switchTab('weekly-plan')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-green-300">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h4 class="font-medium text-sm">Weekly Plan</h4>
+          <p class="text-xs text-gray-500 mt-1">Meals + workouts for each day</p>
+        </button>
+
+        <button onclick="switchTab('quick-view')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-blue-300">
+          <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h4 class="font-medium text-sm">Quick View</h4>
+          <p class="text-xs text-gray-500 mt-1">At-a-glance overview</p>
+        </button>
+
+        <button onclick="switchTab('calendar')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-purple-300">
+          <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h4 class="font-medium text-sm">Calendar</h4>
+          <p class="text-xs text-gray-500 mt-1">Monthly view</p>
+        </button>
+
+        <button onclick="switchTab('grocery')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-orange-300">
+          <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+          </div>
+          <h4 class="font-medium text-sm">Grocery</h4>
+          <p class="text-xs text-gray-500 mt-1">Shopping list</p>
+        </button>
+
+        <button onclick="switchTab('trackers')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-teal-300">
+          <div class="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h4 class="font-medium text-sm">Trackers</h4>
+          <p class="text-xs text-gray-500 mt-1">Progress tracking</p>
+        </button>
+
+        <button onclick="switchTab('downloads')" class="content-card p-4 text-center hover:bg-gray-50 transition-colors border-2 hover:border-pink-300">
+          <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h4 class="font-medium text-sm">Downloads</h4>
+          <p class="text-xs text-gray-500 mt-1">Print resources</p>
+        </button>
+      </div>
+
+      <!-- Weekly Plan Preview -->
+      <div class="content-card p-6">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Weekly Plan</h3>
+              <p class="text-sm text-gray-600">Meals + workouts for each day</p>
+            </div>
+          </div>
+          <button onclick="switchTab('weekly-plan')" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+            📋 Print this section
+          </button>
+        </div>
+
+        <h4 class="font-semibold text-gray-900 mb-4">Weekly Plan (Meals + Workouts)</h4>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="text-left p-3 font-medium text-gray-700">Day</th>
+                <th class="text-left p-3 font-medium text-gray-700">Workout</th>
+                <th class="text-left p-3 font-medium text-gray-700">Breakfast</th>
+                <th class="text-left p-3 font-medium text-gray-700">Lunch</th>
+                <th class="text-left p-3 font-medium text-gray-700">Dinner</th>
+                <th class="text-left p-3 font-medium text-gray-700">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 font-medium">Mon</td>
+                <td class="p-3">
+                  <span class="inline-block px-2 py-1 bg-green-100 text-green-800 rounded text-xs font-medium">Push</span>
+                  <div class="text-xs text-gray-600 mt-1">Chest/Shoulders/Triceps</div>
+                </td>
+                <td class="p-3 text-gray-600">5 whole eggs + 1 cup plain Greek yogurt + 1/2 cup berries + 1 tbsp chia/flax</td>
+                <td class="p-3 text-gray-600">8 oz chicken + 1 cup quinoa + broccoli & zucchini + 1 tbsp olive oil</td>
+                <td class="p-3 text-gray-600">8 oz sirloin steak + Brussels sprouts & mushrooms + side salad</td>
+                <td class="p-3 text-gray-500 italic">Heavy push strength</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 font-medium">Tue</td>
+                <td class="p-3">
+                  <span class="inline-block px-2 py-1 bg-blue-100 text-blue-800 rounded text-xs font-medium">Pull</span>
+                  <div class="text-xs text-gray-600 mt-1">Back/Biceps</div>
+                </td>
+                <td class="p-3 text-gray-600">5 whole eggs + 1 cup plain Greek yogurt + 1/2 cup berries + 1 tbsp chia/flax</td>
+                <td class="p-3 text-gray-600">8 oz salmon + 1 cup jasmine rice + asparagus</td>
+                <td class="p-3 text-gray-600">2 lean beef patties (lettuce wrap) + roasted green beans + avocado</td>
+                <td class="p-3 text-gray-500 italic">Back & biceps focus</td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="p-3 font-medium">Wed</td>
+                <td class="p-3">
+                  <span class="inline-block px-2 py-1 bg-purple-100 text-purple-800 rounded text-xs font-medium">Legs</span>
+                  <div class="text-xs text-gray-600 mt-1">Legs & Core</div>
+                </td>
+                <td class="p-3 text-gray-600">5 whole eggs + 1 cup plain Greek yogurt + 1/2 cup berries + 1 tbsp chia/flax</td>
+                <td class="p-3 text-gray-600">8 oz chicken thighs + 1 baked potato + spinach salad</td>
+                <td class="p-3 text-gray-600">8 oz cod/tilapia + cauliflower rice + grilled peppers</td>
+                <td class="p-3 text-gray-500 italic">Heavy legs + core</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="mt-4 text-center">
+          <button onclick="switchTab('weekly-plan')" class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+            View complete weekly plan →
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <!-- Today's Tracker Tab -->
-    <div id="tracker" class="tab-content active">
+    <div id="tracker" class="tab-content">
       <!-- Today's Focus -->
       <div class="text-center mb-8">
         <h2 class="text-3xl font-bold text-gray-900 mb-2">Today's Focus</h2>
@@ -1896,7 +2169,7 @@
       initializeGroceryList();
       
       // Set active tab
-      switchTab('tracker');
+      switchTab('dashboard');
     }
 
     // Event Listeners
