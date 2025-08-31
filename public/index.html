@@ -13,14 +13,14 @@
   <style>
     html { 
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      background: #f8fafc;
+      background: white;
       min-height: 100vh;
     }
     
     body {
-      background: #f8fafc;
+      background: white;
       min-height: 100vh;
-      color: #1e293b;
+      color: #1f2937;
     }
     
     /* Mobile-first touch targets */
@@ -41,7 +41,7 @@
       transform: translateX(-100%);
       transition: transform 0.3s ease;
       background: white;
-      border-right: 1px solid #e2e8f0;
+      border-right: 1px solid #e5e7eb;
     }
     .mobile-menu.open {
       transform: translateX(0);
@@ -63,40 +63,31 @@
     
     /* Tab buttons */
     .tab-btn {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      color: #64748b;
-      transition: all 0.3s ease;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.2s;
+      color: #6b7280;
+      background: transparent;
+      border: none;
+      white-space: nowrap;
     }
     .tab-btn:hover {
-      background: #e2e8f0;
-      transform: translateY(-1px);
+      background: #f3f4f6;
+      color: #374151;
     }
     .tab-btn.active {
-      background: #3b82f6;
-      color: white;
+      background: #f3f4f6;
+      color: #1f2937;
       font-weight: 600;
-    }
-    
-    /* Glass morphism cards */
-    .glass-card {
-      background: white;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    }
-    
-    /* Header glass effect */
-    .header-glass {
-      background: white;
-      border-bottom: 1px solid #e2e8f0;
     }
     
     /* Content cards */
     .content-card {
       background: white;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      color: #1e293b;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      color: #1f2937;
     }
     
     /* Progress bars */
@@ -112,38 +103,24 @@
     
     /* Button gradients */
     .btn-gradient {
-      background: #3b82f6;
+      background: #1f2937;
       color: white;
       border: none;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
     }
     .btn-gradient:hover {
-      background: #2563eb;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+      background: #374151;
     }
     
     /* Download buttons */
     .download-btn {
-      background: #3b82f6;
+      background: #1f2937;
       color: white;
       border: none;
-      transition: all 0.3s ease;
+      transition: all 0.2s;
     }
     .download-btn:hover {
-      background: #2563eb;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-    }
-    
-    /* Water glasses */
-    .water-glass {
-      background: #3b82f6;
-      transition: all 0.3s ease;
-    }
-    .water-glass:hover {
-      background: #2563eb;
-      transform: scale(1.1);
+      background: #374151;
     }
     
     /* Print tweaks */
@@ -155,7 +132,7 @@
     }
   </style>
 </head>
-<body class="text-gray-900 min-h-screen bg-gray-50">
+<body class="text-gray-900 min-h-screen bg-white">
   
   <!-- Mobile Menu Overlay -->
   <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden no-print"></div>
@@ -213,49 +190,45 @@
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-30 bg-white border-b border-gray-200 shadow-sm">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-gray-100 rounded-lg no-print transition-all">
-          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <header class="bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <div class="flex items-center gap-3 mb-4">
+        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-gray-50 rounded-lg no-print">
+          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-700 grid place-content-center font-bold text-lg">TS</div>
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 grid place-content-center font-bold text-lg">TS</div>
         <div>
-          <h1 class="text-xl font-semibold leading-tight text-gray-900">Tina's Lean & Strong Program</h1>
-          <p class="text-sm text-gray-600">Interactive Tracker • Week <span id="currentWeek">1</span> of 12</p>
+          <h1 class="text-2xl font-bold text-gray-900">Tina's Lean & Strong Program</h1>
+          <p class="text-gray-500">Interactive Fitness Tracker</p>
         </div>
       </div>
       
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex gap-2 no-print overflow-x-auto">
-        <button onclick="switchTab('tracker')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="tracker">Today's Tracker</button>
-        <button onclick="switchTab('program')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="program">Program</button>
-        <button onclick="switchTab('tools')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="tools">Tools</button>
-        <button onclick="switchTab('weekly-plan')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="weekly-plan">Weekly Plan</button>
-        <button onclick="switchTab('quick-view')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="quick-view">Quick View</button>
-        <button onclick="switchTab('calendar')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="calendar">Calendar</button>
-        <button onclick="switchTab('grocery')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="grocery">Grocery</button>
-        <button onclick="switchTab('trackers')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="trackers">Trackers</button>
-        <button onclick="switchTab('downloads')" class="px-4 py-2 text-sm font-medium rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all" data-tab="downloads">Downloads</button>
+      <!-- Tab Navigation -->
+      <nav class="flex gap-1 overflow-x-auto no-print">
+        <button onclick="switchTab('tracker')" class="tab-btn" data-tab="tracker">Today's Tracker</button>
+        <button onclick="switchTab('program')" class="tab-btn" data-tab="program">Program</button>
+        <button onclick="switchTab('tools')" class="tab-btn" data-tab="tools">Tools</button>
+        <button onclick="switchTab('weekly-plan')" class="tab-btn" data-tab="weekly-plan">Weekly Plan</button>
+        <button onclick="switchTab('quick-view')" class="tab-btn" data-tab="quick-view">Quick View</button>
+        <button onclick="switchTab('calendar')" class="tab-btn" data-tab="calendar">Calendar</button>
+        <button onclick="switchTab('grocery')" class="tab-btn" data-tab="grocery">Grocery</button>
+        <button onclick="switchTab('trackers')" class="tab-btn" data-tab="trackers">Trackers</button>
+        <button onclick="switchTab('downloads')" class="tab-btn" data-tab="downloads">Downloads</button>
       </nav>
-      
-      <div class="flex gap-2 no-print">
-        <button onclick="window.print()" class="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium touch-target transition-all">Print</button>
-      </div>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-6xl mx-auto px-4 py-6">
+  <main class="max-w-7xl mx-auto px-4 py-6">
     
     <!-- Today's Tracker Tab -->
     <div id="tracker" class="tab-content active">
       <div class="grid lg:grid-cols-2 gap-6">
         
         <!-- Today's Workout -->
-        <div class="content-card rounded-3xl p-6">
+        <div class="content-card p-6">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-xl font-semibold">Today's Workout</h3>
             <span id="todayName" class="text-sm text-slate-500"></span>
@@ -266,7 +239,7 @@
         </div>
         
         <!-- Daily Habits -->
-        <div class="content-card rounded-3xl p-6">
+        <div class="content-card p-6">
           <h3 class="text-xl font-semibold mb-4">Daily Habits</h3>
           <div class="space-y-4">
             <div class="habit-item" data-habit="workout">
@@ -333,7 +306,7 @@
         </div>
         
         <!-- Personal Notes -->
-        <div class="lg:col-span-2 content-card rounded-3xl p-6">
+        <div class="lg:col-span-2 content-card p-6">
           <h3 class="text-xl font-semibold mb-4">Daily Notes</h3>
           <textarea 
             id="dailyNotes" 
@@ -357,7 +330,7 @@
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Get leaner, stronger, and more defined — <span class="text-pink-600">without heavy weights</span>.</h2>
             <p class="text-slate-600 mt-4">A simple weekly routine, high‑protein meals, and printable trackers. Joint‑friendly exercises, clear portions, and a calendar you can follow at a glance.</p>
           </div>
-          <div class="content-card rounded-3xl p-4">
+          <div class="content-card p-4">
             <dl class="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <dt class="text-slate-500">Calories (start)</dt>
@@ -385,7 +358,7 @@
         <div class="flex items-center justify-between mb-3">
           <h3 class="text-xl font-semibold">Weekly Plan (Meals + Workouts)</h3>
         </div>
-        <div class="overflow-x-auto content-card rounded-3xl">
+        <div class="overflow-x-auto content-card">
           <table class="w-full text-left text-sm">
             <thead class="bg-slate-50 text-slate-600">
               <tr>
@@ -465,7 +438,7 @@
       <div class="grid lg:grid-cols-2 gap-6">
         
         <!-- Workout Timer -->
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="content-card p-6">
           <h3 class="text-xl font-semibold mb-4">Workout Timer</h3>
           <div class="text-center">
             <div id="timerDisplay" class="text-6xl font-bold mb-4 font-mono">00:00</div>
@@ -483,7 +456,7 @@
         </div>
         
         <!-- Meal Prep Calculator -->
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="content-card p-6">
           <h3 class="text-xl font-semibold mb-4">Meal Prep Calculator</h3>
           <div class="space-y-4">
             <div>
@@ -515,7 +488,7 @@
         </div>
         
         <!-- Grocery Progress -->
-        <div class="lg:col-span-2 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="lg:col-span-2 content-card p-6">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-xl font-semibold">Grocery Checklist</h3>
             <span id="groceryProgress" class="text-sm text-slate-500">0% complete</span>
@@ -603,7 +576,7 @@
     </div>
     <!-- Weekly Plan Tab -->
     <div id="weekly-plan" class="tab-content">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="content-card p-6">
         <h2 class="text-2xl font-semibold mb-6">Weekly Plan Overview</h2>
         
         <!-- Weekly Schedule -->
@@ -733,7 +706,7 @@
 
     <!-- Quick View Tab -->
     <div id="quick-view" class="tab-content">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="content-card p-6">
         <h2 class="text-2xl font-semibold mb-6">Quick View - Gym Reference</h2>
         
         <div class="grid md:grid-cols-2 gap-8">
@@ -790,7 +763,7 @@
 
     <!-- Calendar Tab -->
     <div id="calendar" class="tab-content">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="content-card p-6">
         <h2 class="text-2xl font-semibold mb-6">12-Week Calendar View</h2>
         
         <div class="grid grid-cols-7 gap-2 mb-6">
@@ -834,7 +807,7 @@
 
     <!-- Grocery Tab -->
     <div id="grocery" class="tab-content">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="content-card p-6">
         <h2 class="text-2xl font-semibold mb-6">Grocery Checklist</h2>
         
         <div class="grid md:grid-cols-3 gap-8">
@@ -951,7 +924,7 @@
 
     <!-- Trackers Tab -->
     <div id="trackers" class="tab-content">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="content-card p-6">
         <h2 class="text-2xl font-semibold mb-6">Progress Trackers</h2>
         
         <div class="grid md:grid-cols-2 gap-8">
@@ -1022,7 +995,7 @@
 
     <!-- Downloads Tab -->
     <div id="downloads" class="tab-content">
-      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div class="content-card p-6">
         <div class="flex items-center gap-3 mb-6">
           <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -1167,10 +1140,9 @@
   </button>
 
   <!-- Footer -->
-  <footer class="border-t border-gray-200 mt-12 bg-white">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-gray-600 flex items-center justify-between">
-      <span>Interactive Fitness Tracker • Week <span id="footerWeek">1</span> of 12</span>
-      <span>General guidance only — consult a professional before starting.</span>
+  <footer class="border-t border-gray-100 mt-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-6 text-sm text-gray-500 text-center">
+      <p>Interactive Fitness Tracker • General guidance only — consult a professional before starting.</p>
     </div>
   </footer>
 
