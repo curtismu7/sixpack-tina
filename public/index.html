@@ -73,6 +73,26 @@
       border: 1px solid rgba(255, 255, 255, 0.3);
       white-space: nowrap;
       backdrop-filter: blur(10px);
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .tab-btn {
+        padding: 6px 8px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .tab-btn {
+        padding: 4px 6px;
+        font-size: 0.7rem;
+        flex: 1;
+        min-width: auto;
+      }
     }
     .tab-btn:hover {
       background: rgba(255, 255, 255, 0.3);
@@ -207,7 +227,7 @@
 
   <!-- Header -->
   <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border-b border-purple-200">
-    <div class="max-w-full mx-auto px-6 py-6">
+    <div class="max-w-full mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6">
       <div class="flex items-center gap-3 mb-4">
         <button id="openMobileMenu" class="md:hidden p-2 hover:bg-white/20 rounded-lg no-print">
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,23 +242,53 @@
       </div>
       
       <!-- Tab Navigation -->
-      <nav class="flex flex-wrap gap-1 no-print justify-center">
-        <button onclick="switchTab('dashboard')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="dashboard">📊 Overview</button>
-        <button onclick="switchTab('tracker')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tracker">✅ Tracker</button>
-        <button onclick="switchTab('program')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="program">📋 Program</button>
-        <button onclick="switchTab('tools')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tools">🛠 Tools</button>
-        <button onclick="switchTab('weekly-plan')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="weekly-plan">📅 Weekly</button>
-        <button onclick="switchTab('quick-view')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="quick-view">⚡ Quick</button>
-        <button onclick="switchTab('calendar')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="calendar">🗓 Calendar</button>
-        <button onclick="switchTab('grocery')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="grocery">🛒 Grocery</button>
-        <button onclick="switchTab('trackers')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="trackers">📈 Trackers</button>
-        <button onclick="switchTab('downloads')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="downloads">📥 Downloads</button>
+      <nav class="flex flex-wrap gap-1 no-print justify-center sm:gap-2">
+        <button onclick="switchTab('dashboard')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="dashboard">
+          <span class="hidden sm:inline">📊 Overview</span>
+          <span class="sm:hidden">📊</span>
+        </button>
+        <button onclick="switchTab('tracker')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tracker">
+          <span class="hidden sm:inline">✅ Tracker</span>
+          <span class="sm:hidden">✅</span>
+        </button>
+        <button onclick="switchTab('program')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="program">
+          <span class="hidden sm:inline">📋 Program</span>
+          <span class="sm:hidden">📋</span>
+        </button>
+        <button onclick="switchTab('tools')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tools">
+          <span class="hidden sm:inline">🛠 Tools</span>
+          <span class="sm:hidden">🛠</span>
+        </button>
+        <button onclick="switchTab('weekly-plan')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="weekly-plan">
+          <span class="hidden sm:inline">📅 Weekly</span>
+          <span class="sm:hidden">📅</span>
+        </button>
+        <button onclick="switchTab('quick-view')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="quick-view">
+          <span class="hidden sm:inline">⚡ Quick</span>
+          <span class="sm:hidden">⚡</span>
+        </button>
+        <button onclick="switchTab('calendar')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="calendar">
+          <span class="hidden sm:inline">🗓 Calendar</span>
+          <span class="sm:hidden">🗓</span>
+        </button>
+        <button onclick="switchTab('grocery')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="grocery">
+          <span class="hidden sm:inline">🛒 Grocery</span>
+          <span class="sm:hidden">🛒</span>
+        </button>
+        <button onclick="switchTab('trackers')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="trackers">
+          <span class="hidden sm:inline">📈 Trackers</span>
+          <span class="sm:hidden">📈</span>
+        </button>
+        <button onclick="switchTab('downloads')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="downloads">
+          <span class="hidden sm:inline">📥 Downloads</span>
+          <span class="sm:hidden">📥</span>
+        </button>
       </nav>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-full mx-auto px-6 py-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
+  <main class="max-w-full mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
     
     <!-- Dashboard Tab -->
     <div id="dashboard" class="tab-content active">
