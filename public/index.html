@@ -63,31 +63,42 @@
     
     /* Tab buttons */
     .tab-btn {
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
       font-weight: 500;
-      transition: all 0.2s;
-      color: #6b7280;
-      background: transparent;
-      border: none;
+      transition: all 0.3s;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       white-space: nowrap;
+      backdrop-filter: blur(10px);
     }
     .tab-btn:hover {
-      background: #f3f4f6;
-      color: #374151;
+      background: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     .tab-btn.active {
-      background: #f3f4f6;
-      color: #1f2937;
+      background: rgba(255, 255, 255, 0.9);
+      color: #6366f1;
       font-weight: 600;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
     
     /* Content cards */
     .content-card {
       background: white;
       border: 1px solid #e5e7eb;
-      border-radius: 12px;
+      border-radius: 16px;
       color: #1f2937;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+    .content-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
     
     /* Progress bars */
@@ -194,45 +205,45 @@
   </div>
 
   <!-- Header -->
-  <header class="bg-white border-b border-gray-100">
+  <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border-b border-purple-200">
     <div class="max-w-7xl mx-auto px-4 py-6">
       <div class="flex items-center gap-3 mb-4">
-        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-gray-50 rounded-lg no-print">
-          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-white/20 rounded-lg no-print">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 grid place-content-center font-bold text-lg">TS</div>
+        <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm text-white grid place-content-center font-bold text-xl shadow-lg">💪</div>
         <div>
-          <h1 class="text-2xl font-bold text-gray-900">Tina's Lean & Strong Program</h1>
-          <p class="text-gray-500">Interactive Fitness Tracker</p>
+          <h1 class="text-2xl font-bold text-white">Tina's Lean & Strong Program</h1>
+          <p class="text-purple-100">Interactive Fitness Tracker</p>
         </div>
       </div>
       
       <!-- Tab Navigation -->
-      <nav class="flex gap-1 overflow-x-auto no-print">
-        <button onclick="switchTab('dashboard')" class="tab-btn" data-tab="dashboard">Overview</button>
-        <button onclick="switchTab('tracker')" class="tab-btn" data-tab="tracker">Today's Tracker</button>
-        <button onclick="switchTab('program')" class="tab-btn" data-tab="program">Program</button>
-        <button onclick="switchTab('tools')" class="tab-btn" data-tab="tools">Tools</button>
-        <button onclick="switchTab('weekly-plan')" class="tab-btn" data-tab="weekly-plan">Weekly Plan</button>
-        <button onclick="switchTab('quick-view')" class="tab-btn" data-tab="quick-view">Quick View</button>
-        <button onclick="switchTab('calendar')" class="tab-btn" data-tab="calendar">Calendar</button>
-        <button onclick="switchTab('grocery')" class="tab-btn" data-tab="grocery">Grocery</button>
-        <button onclick="switchTab('trackers')" class="tab-btn" data-tab="trackers">Trackers</button>
-        <button onclick="switchTab('downloads')" class="tab-btn" data-tab="downloads">Downloads</button>
+      <nav class="flex gap-2 overflow-x-auto no-print">
+        <button onclick="switchTab('dashboard')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="dashboard">📊 Overview</button>
+        <button onclick="switchTab('tracker')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tracker">✅ Today's Tracker</button>
+        <button onclick="switchTab('program')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="program">📋 Program</button>
+        <button onclick="switchTab('tools')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tools">🛠 Tools</button>
+        <button onclick="switchTab('weekly-plan')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="weekly-plan">📅 Weekly Plan</button>
+        <button onclick="switchTab('quick-view')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="quick-view">⚡ Quick View</button>
+        <button onclick="switchTab('calendar')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="calendar">🗓 Calendar</button>
+        <button onclick="switchTab('grocery')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="grocery">🛒 Grocery</button>
+        <button onclick="switchTab('trackers')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="trackers">📈 Trackers</button>
+        <button onclick="switchTab('downloads')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="downloads">📥 Downloads</button>
       </nav>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 py-6">
+  <main class="max-w-7xl mx-auto px-4 py-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
     
     <!-- Dashboard Tab -->
     <div id="dashboard" class="tab-content active">
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Overview</h1>
-        <p class="text-gray-600">Your fitness journey at a glance</p>
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">🏋️ Overview</h1>
+        <p class="text-gray-700 text-lg">Your fitness journey at a glance</p>
       </div>
 
       <!-- Overview Cards -->
@@ -541,21 +552,35 @@
     <div id="tracker" class="tab-content">
       <!-- Today's Focus -->
       <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold text-gray-900 mb-2">Today's Focus</h2>
-        <p class="text-gray-600" id="todayName">Loading today's workout...</p>
+        <h2 class="text-4xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-2">✅ Today's Focus</h2>
+        <p class="text-gray-700 text-lg" id="todayName">Loading today's workout...</p>
       </div>
 
       <!-- Today's Workout -->
-      <div class="content-card p-8 mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-6">Workout</h3>
+      <div class="content-card p-8 mb-8 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-green-900">💪 Today's Workout</h3>
+        </div>
         <div id="todayWorkout" class="space-y-4">
           <!-- Workout content will be populated by JavaScript -->
         </div>
       </div>
 
       <!-- Daily Habits -->
-      <div class="content-card p-8 mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-6">Daily Habits</h3>
+      <div class="content-card p-8 mb-8 bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-blue-900">🎯 Daily Habits</h3>
+        </div>
         <div class="space-y-6">
           <div class="habit-item" data-habit="workout">
             <label class="flex items-center gap-3 cursor-pointer">
@@ -630,38 +655,50 @@
     <!-- Program Overview Tab -->
     <div id="program" class="tab-content">
       <!-- Hero Section -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Get leaner, stronger, and more defined — <span class="text-blue-600">without heavy weights</span>.
+      <div class="text-center mb-12 p-8 bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl border border-purple-200">
+        <div class="text-6xl mb-4">🏋️‍♀️</div>
+        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+          Get leaner, stronger, and more defined — <span class="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">without heavy weights</span>.
         </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">
           A simple weekly routine, high‑protein meals, and printable trackers. Joint‑friendly exercises, clear portions, and a calendar you can follow at a glance.
         </p>
       </div>
 
       <!-- Quick Stats -->
       <div class="grid md:grid-cols-4 gap-6 mb-12">
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900">1,700–1,900</div>
-          <div class="text-sm text-gray-600">Calories / day</div>
+        <div class="text-center p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-xl border border-orange-200 hover:shadow-lg transition-all">
+          <div class="text-3xl mb-2">🔥</div>
+          <div class="text-2xl font-bold text-orange-900">1,700–1,900</div>
+          <div class="text-sm text-orange-700">Calories / day</div>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900">110–130g</div>
-          <div class="text-sm text-gray-600">Protein target</div>
+        <div class="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200 hover:shadow-lg transition-all">
+          <div class="text-3xl mb-2">🥩</div>
+          <div class="text-2xl font-bold text-green-900">110–130g</div>
+          <div class="text-sm text-green-700">Protein target</div>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900">2–3L</div>
-          <div class="text-sm text-gray-600">Water daily</div>
+        <div class="text-center p-6 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl border border-cyan-200 hover:shadow-lg transition-all">
+          <div class="text-3xl mb-2">💧</div>
+          <div class="text-2xl font-bold text-cyan-900">2–3L</div>
+          <div class="text-sm text-cyan-700">Water daily</div>
         </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-gray-900">7–8h</div>
-          <div class="text-sm text-gray-600">Sleep target</div>
+        <div class="text-center p-6 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200 hover:shadow-lg transition-all">
+          <div class="text-3xl mb-2">😴</div>
+          <div class="text-2xl font-bold text-indigo-900">7–8h</div>
+          <div class="text-sm text-indigo-700">Sleep target</div>
         </div>
       </div>
 
       <!-- Weekly Plan -->
-      <div class="content-card p-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Weekly Plan</h2>
+      <div class="content-card p-8 bg-gradient-to-br from-slate-50 to-gray-50 border-gray-200">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900">📅 Weekly Plan</h2>
+        </div>
         
         <div class="overflow-x-auto">
           <table class="w-full">
@@ -732,11 +769,23 @@
 
     <!-- Interactive Tools Tab -->
     <div id="tools" class="tab-content">
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">🛠 Interactive Tools</h1>
+        <p class="text-gray-700 text-lg">Helpful tools to enhance your fitness journey</p>
+      </div>
+      
       <div class="grid lg:grid-cols-2 gap-6">
         
         <!-- Workout Timer -->
-        <div class="content-card p-6">
-          <h3 class="text-xl font-semibold mb-4">Workout Timer</h3>
+        <div class="content-card p-6 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-green-900">⏱ Workout Timer</h3>
+          </div>
           <div class="text-center">
             <div id="timerDisplay" class="text-6xl font-bold mb-4 font-mono">00:00</div>
             <div id="timerMode" class="text-lg font-medium mb-4 text-gray-600">Ready to Start</div>
@@ -753,8 +802,15 @@
         </div>
         
         <!-- Meal Prep Calculator -->
-        <div class="content-card p-6">
-          <h3 class="text-xl font-semibold mb-4">Meal Prep Calculator</h3>
+        <div class="content-card p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-orange-900">🍽 Meal Prep Calculator</h3>
+          </div>
           <div class="space-y-4">
             <div>
               <label class="block text-sm font-medium mb-2">Servings Needed</label>
@@ -785,10 +841,17 @@
         </div>
         
         <!-- Grocery Progress -->
-        <div class="lg:col-span-2 content-card p-6">
+        <div class="lg:col-span-2 content-card p-6 bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-semibold">Grocery Checklist</h3>
-            <span id="groceryProgress" class="text-sm text-slate-500">0% complete</span>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-purple-900">🛒 Grocery Checklist</h3>
+            </div>
+            <span id="groceryProgress" class="text-sm text-purple-600 font-medium">0% complete</span>
           </div>
           <div class="grid md:grid-cols-3 gap-6">
             <div>
@@ -873,8 +936,20 @@
     </div>
     <!-- Weekly Plan Tab -->
     <div id="weekly-plan" class="tab-content">
-      <div class="content-card p-6">
-        <h2 class="text-2xl font-semibold mb-6">Weekly Plan Overview</h2>
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">📅 Weekly Plan</h1>
+        <p class="text-gray-700 text-lg">Your complete weekly schedule with meals and workouts</p>
+      </div>
+      
+      <div class="content-card p-6 bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold text-blue-900">📋 Weekly Plan Overview</h2>
+        </div>
         
         <!-- Weekly Schedule -->
         <div class="overflow-x-auto">
@@ -1436,12 +1511,27 @@
 
     <!-- Grocery Tab -->
     <div id="grocery" class="tab-content">
-      <div class="content-card p-6">
-        <h2 class="text-2xl font-semibold mb-6">Grocery Checklist</h2>
+      <div class="mb-8 text-center">
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">🛒 Grocery List</h1>
+        <p class="text-gray-700 text-lg">Everything you need for your weekly meal prep</p>
+      </div>
+      
+      <div class="content-card p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border-orange-200">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v5a2 2 0 01-2 2H9a2 2 0 01-2-2v-5m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-semibold text-orange-900">📝 Grocery Checklist</h2>
+        </div>
         
         <div class="grid md:grid-cols-3 gap-8">
-          <div>
-            <h3 class="text-lg font-semibold mb-4 text-red-600">Proteins</h3>
+          <div class="p-4 bg-gradient-to-br from-red-50 to-pink-50 rounded-xl border border-red-200">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">🥩</span>
+              <h3 class="text-lg font-semibold text-red-700">Proteins</h3>
+            </div>
             <div class="space-y-2">
               <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" id="chicken-breast" class="w-5 h-5 text-pink-600 rounded">
@@ -1474,8 +1564,11 @@
             </div>
           </div>
           
-          <div>
-            <h3 class="text-lg font-semibold mb-4 text-blue-600">Carbs & Grains</h3>
+          <div class="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-200">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">🌾</span>
+              <h3 class="text-lg font-semibold text-blue-700">Carbs & Grains</h3>
+            </div>
             <div class="space-y-2">
               <label class="flex items-center gap-3 cursor-pointer">
                 <input type="checkbox" id="quinoa" class="w-5 h-5 text-pink-600 rounded">
