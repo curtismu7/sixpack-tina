@@ -73,7 +73,7 @@
         </button>
       </div>
     </div>
-    <div class="p-4 space-y-3">
+    <div class="p-4 space-y-3 max-h-96 overflow-y-auto">
       <button onclick="switchTab('tracker')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
         <span class="w-8 h-8 bg-pink-100 text-pink-700 rounded-lg flex items-center justify-center text-sm font-bold">T</span>
         Today's Tracker
@@ -85,6 +85,30 @@
       <button onclick="switchTab('tools')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
         <span class="w-8 h-8 bg-green-100 text-green-700 rounded-lg flex items-center justify-center text-sm font-bold">🛠</span>
         Interactive Tools
+      </button>
+      <button onclick="switchTab('weekly-plan')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
+        <span class="w-8 h-8 bg-purple-100 text-purple-700 rounded-lg flex items-center justify-center text-sm font-bold">W</span>
+        Weekly Plan
+      </button>
+      <button onclick="switchTab('quick-view')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
+        <span class="w-8 h-8 bg-orange-100 text-orange-700 rounded-lg flex items-center justify-center text-sm font-bold">Q</span>
+        Quick View
+      </button>
+      <button onclick="switchTab('calendar')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
+        <span class="w-8 h-8 bg-red-100 text-red-700 rounded-lg flex items-center justify-center text-sm font-bold">📅</span>
+        Calendar
+      </button>
+      <button onclick="switchTab('grocery')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
+        <span class="w-8 h-8 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center text-sm font-bold">🛒</span>
+        Grocery
+      </button>
+      <button onclick="switchTab('trackers')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
+        <span class="w-8 h-8 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-bold">📊</span>
+        Trackers
+      </button>
+      <button onclick="switchTab('downloads')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
+        <span class="w-8 h-8 bg-gray-100 text-gray-700 rounded-lg flex items-center justify-center text-sm font-bold">📥</span>
+        Downloads
       </button>
     </div>
   </div>
@@ -106,10 +130,16 @@
       </div>
       
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex gap-1 no-print">
+      <nav class="hidden md:flex gap-1 no-print overflow-x-auto">
         <button onclick="switchTab('tracker')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="tracker">Today's Tracker</button>
         <button onclick="switchTab('program')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="program">Program</button>
         <button onclick="switchTab('tools')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="tools">Tools</button>
+        <button onclick="switchTab('weekly-plan')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="weekly-plan">Weekly Plan</button>
+        <button onclick="switchTab('quick-view')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="quick-view">Quick View</button>
+        <button onclick="switchTab('calendar')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="calendar">Calendar</button>
+        <button onclick="switchTab('grocery')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="grocery">Grocery</button>
+        <button onclick="switchTab('trackers')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="trackers">Trackers</button>
+        <button onclick="switchTab('downloads')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="downloads">Downloads</button>
       </nav>
       
       <div class="flex gap-2 no-print">
@@ -472,6 +502,562 @@
         </div>
       </div>
     </div>
+    <!-- Weekly Plan Tab -->
+    <div id="weekly-plan" class="tab-content">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold mb-6">Weekly Plan Overview</h2>
+        
+        <!-- Weekly Schedule -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50">
+              <tr>
+                <th class="text-left p-3 font-medium">Day</th>
+                <th class="text-left p-3 font-medium">Workout</th>
+                <th class="text-left p-3 font-medium">Breakfast</th>
+                <th class="text-left p-3 font-medium">Lunch</th>
+                <th class="text-left p-3 font-medium">Dinner</th>
+                <th class="text-left p-3 font-medium">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="p-3 font-medium">Monday</td>
+                <td class="p-3">Full-Body (Light): Goblet Squat, Incline DB Press, Lat Pulldown</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">5 oz chicken + quinoa + broccoli</td>
+                <td class="p-3">5 oz salmon + roasted veg + ½ cup rice</td>
+                <td class="p-3">Light effort, form focus</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Tuesday</td>
+                <td class="p-3">Conditioning & Core: Walk/Cycle 30-40m, Dead bug, Side plank</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">Turkey bowl + brown rice + greens</td>
+                <td class="p-3">Lean burger (lettuce wrap) + green beans</td>
+                <td class="p-3">Zone 2 cardio</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Wednesday</td>
+                <td class="p-3">Lower & Glutes: Step-ups, Hip Thrust, Leg Press, Kickbacks</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">5 oz cod + sweet corn + salad</td>
+                <td class="p-3">Chicken stir-fry + jasmine rice + veg</td>
+                <td class="p-3">Glute focus</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Thursday</td>
+                <td class="p-3">Mobility / Active Recovery: Easy walk + yoga/mobility</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">Greek yogurt parfait + oats + almonds</td>
+                <td class="p-3">Shrimp tacos (2-3) + slaw</td>
+                <td class="p-3">Keep it easy</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Friday</td>
+                <td class="p-3">Upper Body: Seated DB Press, Chest-Supported Row, Cable Fly</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">Chicken salad wrap + fruit</td>
+                <td class="p-3">Baked salmon + quinoa + asparagus</td>
+                <td class="p-3">Pump, no strain</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Saturday</td>
+                <td class="p-3">Optional Conditioning: Incline treadmill 20-30m + Core circuit</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">Egg scramble bowl + avocado toast</td>
+                <td class="p-3">Sirloin strips + roasted potatoes + veg</td>
+                <td class="p-3">Optional</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium">Sunday</td>
+                <td class="p-3">Rest / Recovery: light stretch, hydrate, sleep</td>
+                <td class="p-3">2 eggs + Greek yogurt + berries</td>
+                <td class="p-3">Chicken & wild rice soup</td>
+                <td class="p-3">Turkey meatballs + marinara + zoodles</td>
+                <td class="p-3">Full rest</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Daily Tracking -->
+        <div class="mt-8 p-4 bg-slate-50 rounded-2xl">
+          <h3 class="text-lg font-semibold mb-4">Daily Habits Tracker</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="workout-done" class="w-5 h-5 text-pink-600 rounded">
+              <span>Workout Complete</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="protein-target" class="w-5 h-5 text-pink-600 rounded">
+              <span>Protein Target (110-130g)</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="water-intake" class="w-5 h-5 text-pink-600 rounded">
+              <span>Water Intake (2-3L)</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="sleep-hours" class="w-5 h-5 text-pink-600 rounded">
+              <span>7-8 Hours Sleep</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="vegetables" class="w-5 h-5 text-pink-600 rounded">
+              <span>5+ Servings Vegetables</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="meal-prep" class="w-5 h-5 text-pink-600 rounded">
+              <span>Meal Prep Done</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="progress-photos" class="w-5 h-5 text-pink-600 rounded">
+              <span>Progress Photos</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="measurements" class="w-5 h-5 text-pink-600 rounded">
+              <span>Weekly Measurements</span>
+            </label>
+          </div>
+          
+          <div class="mt-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="font-medium">Daily Progress</span>
+              <span id="weekly-progress-count" class="text-sm text-slate-500">0/8 complete</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div id="weekly-progress-bar" class="bg-pink-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick View Tab -->
+    <div id="quick-view" class="tab-content">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold mb-6">Quick View - Gym Reference</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Workout Schedule</h3>
+            <div class="space-y-3">
+              <div class="p-3 bg-slate-50 rounded-lg">
+                <div class="font-medium">Monday - Full Body</div>
+                <div class="text-sm text-slate-600">Goblet Squat, Incline DB Press, Lat Pulldown, DB RDL</div>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-lg">
+                <div class="font-medium">Tuesday - Cardio & Core</div>
+                <div class="text-sm text-slate-600">30-40min walk/cycle, Dead bug, Side plank</div>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-lg">
+                <div class="font-medium">Wednesday - Lower & Glutes</div>
+                <div class="text-sm text-slate-600">Step-ups, Hip Thrust, Leg Press, Kickbacks</div>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-lg">
+                <div class="font-medium">Thursday - Recovery</div>
+                <div class="text-sm text-slate-600">Easy walk, yoga, mobility work</div>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-lg">
+                <div class="font-medium">Friday - Upper Body</div>
+                <div class="text-sm text-slate-600">Seated DB Press, Chest Row, Cable Fly, Curls</div>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Daily Targets</h3>
+            <div class="space-y-3">
+              <div class="p-3 bg-blue-50 rounded-lg">
+                <div class="font-medium">Protein</div>
+                <div class="text-sm text-slate-600">110-130g per day</div>
+              </div>
+              <div class="p-3 bg-blue-50 rounded-lg">
+                <div class="font-medium">Water</div>
+                <div class="text-sm text-slate-600">2-3 liters per day</div>
+              </div>
+              <div class="p-3 bg-blue-50 rounded-lg">
+                <div class="font-medium">Sleep</div>
+                <div class="text-sm text-slate-600">7-8 hours per night</div>
+              </div>
+              <div class="p-3 bg-blue-50 rounded-lg">
+                <div class="font-medium">Vegetables</div>
+                <div class="text-sm text-slate-600">5+ servings per day</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calendar Tab -->
+    <div id="calendar" class="tab-content">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold mb-6">12-Week Calendar View</h2>
+        
+        <div class="grid grid-cols-7 gap-2 mb-6">
+          <div class="text-center font-medium p-2">Sun</div>
+          <div class="text-center font-medium p-2">Mon</div>
+          <div class="text-center font-medium p-2">Tue</div>
+          <div class="text-center font-medium p-2">Wed</div>
+          <div class="text-center font-medium p-2">Thu</div>
+          <div class="text-center font-medium p-2">Fri</div>
+          <div class="text-center font-medium p-2">Sat</div>
+        </div>
+        
+        <div class="grid grid-cols-7 gap-2" id="calendar-grid">
+          <!-- Calendar will be populated by JavaScript -->
+        </div>
+        
+        <div class="mt-6 flex gap-4 text-sm">
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-red-200 rounded"></div>
+            <span>Full Body</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-blue-200 rounded"></div>
+            <span>Cardio</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-green-200 rounded"></div>
+            <span>Lower Body</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-yellow-200 rounded"></div>
+            <span>Upper Body</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 bg-gray-200 rounded"></div>
+            <span>Rest</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grocery Tab -->
+    <div id="grocery" class="tab-content">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold mb-6">Grocery Checklist</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-4 text-red-600">Proteins</h3>
+            <div class="space-y-2">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="chicken-breast" class="w-5 h-5 text-pink-600 rounded">
+                <span>Chicken breast (2 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="salmon" class="w-5 h-5 text-pink-600 rounded">
+                <span>Salmon fillets (1 lb)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="ground-turkey" class="w-5 h-5 text-pink-600 rounded">
+                <span>Ground turkey (1 lb)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="eggs" class="w-5 h-5 text-pink-600 rounded">
+                <span>Eggs (18 count)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="greek-yogurt" class="w-5 h-5 text-pink-600 rounded">
+                <span>Greek yogurt (32 oz)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="cod" class="w-5 h-5 text-pink-600 rounded">
+                <span>Cod fillets (1 lb)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="shrimp" class="w-5 h-5 text-pink-600 rounded">
+                <span>Shrimp (1 lb)</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4 text-blue-600">Carbs & Grains</h3>
+            <div class="space-y-2">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="quinoa" class="w-5 h-5 text-pink-600 rounded">
+                <span>Quinoa (2 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="brown-rice" class="w-5 h-5 text-pink-600 rounded">
+                <span>Brown rice (2 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="jasmine-rice" class="w-5 h-5 text-pink-600 rounded">
+                <span>Jasmine rice (2 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="sweet-potatoes" class="w-5 h-5 text-pink-600 rounded">
+                <span>Sweet potatoes (3 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="oats" class="w-5 h-5 text-pink-600 rounded">
+                <span>Rolled oats (32 oz)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="whole-grain-wraps" class="w-5 h-5 text-pink-600 rounded">
+                <span>Whole grain wraps</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4 text-green-600">Vegetables & Fruits</h3>
+            <div class="space-y-2">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="broccoli" class="w-5 h-5 text-pink-600 rounded">
+                <span>Broccoli (2 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="spinach" class="w-5 h-5 text-pink-600 rounded">
+                <span>Spinach (5 oz bag)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="mixed-berries" class="w-5 h-5 text-pink-600 rounded">
+                <span>Mixed berries (2 lbs)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="avocados" class="w-5 h-5 text-pink-600 rounded">
+                <span>Avocados (4 count)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="bell-peppers" class="w-5 h-5 text-pink-600 rounded">
+                <span>Bell peppers (3 count)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="asparagus" class="w-5 h-5 text-pink-600 rounded">
+                <span>Asparagus (1 lb)</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="green-beans" class="w-5 h-5 text-pink-600 rounded">
+                <span>Green beans (1 lb)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-slate-50 rounded-2xl">
+          <div class="flex justify-between items-center mb-2">
+            <span class="font-medium">Shopping Progress</span>
+            <span id="grocery-progress-count" class="text-sm text-slate-500">0/20 items</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div id="grocery-progress-bar" class="bg-green-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trackers Tab -->
+    <div id="trackers" class="tab-content">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold mb-6">Progress Trackers</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Weekly Measurements</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium mb-1">Weight (lbs)</label>
+                <input type="number" id="weight-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter weight">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Waist (inches)</label>
+                <input type="number" id="waist-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter waist measurement">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Hips (inches)</label>
+                <input type="number" id="hips-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter hip measurement">
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-1">Body Fat %</label>
+                <input type="number" id="bodyfat-input" class="w-full p-3 border border-slate-200 rounded-lg" placeholder="Enter body fat %">
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Weekly Goals</h3>
+            <div class="space-y-3">
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-workouts" class="w-5 h-5 text-pink-600 rounded">
+                <span>Complete all scheduled workouts</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-protein" class="w-5 h-5 text-pink-600 rounded">
+                <span>Hit protein target daily</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-water" class="w-5 h-5 text-pink-600 rounded">
+                <span>Drink 2-3L water daily</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-sleep" class="w-5 h-5 text-pink-600 rounded">
+                <span>Get 7-8 hours sleep nightly</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-vegetables" class="w-5 h-5 text-pink-600 rounded">
+                <span>Eat 5+ servings vegetables daily</span>
+              </label>
+              <label class="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" id="week-photos" class="w-5 h-5 text-pink-600 rounded">
+                <span>Take progress photos</span>
+              </label>
+            </div>
+            
+            <div class="mt-6 p-4 bg-slate-50 rounded-2xl">
+              <div class="flex justify-between items-center mb-2">
+                <span class="font-medium">Weekly Goals</span>
+                <span id="tracker-progress-count" class="text-sm text-slate-500">0/6 complete</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2">
+                <div id="tracker-progress-bar" class="bg-purple-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Downloads Tab -->
+    <div id="downloads" class="tab-content">
+      <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <div>
+            <h2 class="text-2xl font-semibold">Downloads</h2>
+            <p class="text-slate-500">PDFs matching all sections</p>
+          </div>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Master Playbook (Complete) -->
+          <div class="flex items-center justify-between p-5 border border-slate-200 rounded-2xl bg-white hover:shadow-sm transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-slate-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold">Master Playbook (Complete)</div>
+                <div class="text-sm text-slate-600">Opens as a PDF</div>
+              </div>
+            </div>
+            <a href="womens_master_playbook_with_calendar.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
+              </svg>
+              Download
+            </a>
+          </div>
+
+          <!-- Master Playbook (Print-Friendly) -->
+          <div class="flex items-center justify-between p-5 border border-slate-200 rounded-2xl bg-white hover:shadow-sm transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-slate-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold">Master Playbook (Print-Friendly)</div>
+                <div class="text-sm text-slate-600">Opens as a PDF</div>
+              </div>
+            </div>
+            <a href="womens_master_playbook_print.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
+              </svg>
+              Download
+            </a>
+          </div>
+
+          <!-- Weekly Plan (Chart) -->
+          <div class="flex items-center justify-between p-5 border border-slate-200 rounded-2xl bg-white hover:shadow-sm transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-slate-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold">Weekly Plan (Chart)</div>
+                <div class="text-sm text-slate-600">Opens as a PDF</div>
+              </div>
+            </div>
+            <a href="womens_weekly_plan.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
+              </svg>
+              Download
+            </a>
+          </div>
+
+          <!-- Continue with remaining download cards... -->
+          <div class="flex items-center justify-between p-5 border border-slate-200 rounded-2xl bg-white hover:shadow-sm transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-slate-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold">Quick View (1-page)</div>
+                <div class="text-sm text-slate-600">Opens as a PDF</div>
+              </div>
+            </div>
+            <a href="womens_quick_view.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
+              </svg>
+              Download
+            </a>
+          </div>
+
+          <div class="flex items-center justify-between p-5 border border-slate-200 rounded-2xl bg-white hover:shadow-sm transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-slate-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold">Grocery Checklist</div>
+                <div class="text-sm text-slate-600">Opens as a PDF</div>
+              </div>
+            </div>
+            <a href="womens_grocery_list.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
+              </svg>
+              Download
+            </a>
+          </div>
+
+          <div class="flex items-center justify-between p-5 border border-slate-200 rounded-2xl bg-white hover:shadow-sm transition-all">
+            <div class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-slate-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <div class="flex-1">
+                <div class="font-semibold">12-Week Transformation Tracker</div>
+                <div class="text-sm text-slate-600">Opens as a PDF</div>
+              </div>
+            </div>
+            <a href="womens_tracking_sheet_12weeks_progress.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
+              </svg>
+              Download
+            </a>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-slate-50 rounded-2xl">
+          <h3 class="font-semibold mb-2">How to host these PDFs</h3>
+          <p class="text-sm text-slate-600">
+            These links work inside ChatGPT. To deploy this site elsewhere, place the PDF files in your 
+            <code class="bg-slate-200 px-1 rounded">/public</code> folder and update the pdf links 
+            (app.js points to your file.pdf).
+          </p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <!-- Floating Action Button -->
@@ -543,15 +1129,95 @@
       }
     };
 
+    // Progress tracking for new tabs
+    function updateNewTabProgress() {
+      // Weekly Plan progress
+      const weeklyCheckboxes = document.querySelectorAll('#weekly-plan input[type="checkbox"]');
+      const weeklyChecked = document.querySelectorAll('#weekly-plan input[type="checkbox"]:checked');
+      const weeklyProgressBar = document.getElementById('weekly-progress-bar');
+      const weeklyProgressCount = document.getElementById('weekly-progress-count');
+      
+      if (weeklyProgressBar && weeklyProgressCount) {
+        const weeklyPercentage = weeklyCheckboxes.length > 0 ? (weeklyChecked.length / weeklyCheckboxes.length) * 100 : 0;
+        weeklyProgressBar.style.width = weeklyPercentage + '%';
+        weeklyProgressCount.textContent = `${weeklyChecked.length}/${weeklyCheckboxes.length} complete`;
+      }
+      
+      // Grocery progress
+      const groceryCheckboxes = document.querySelectorAll('#grocery input[type="checkbox"]');
+      const groceryChecked = document.querySelectorAll('#grocery input[type="checkbox"]:checked');
+      const groceryProgressBar = document.getElementById('grocery-progress-bar');
+      const groceryProgressCount = document.getElementById('grocery-progress-count');
+      
+      if (groceryProgressBar && groceryProgressCount) {
+        const groceryPercentage = groceryCheckboxes.length > 0 ? (groceryChecked.length / groceryCheckboxes.length) * 100 : 0;
+        groceryProgressBar.style.width = groceryPercentage + '%';
+        groceryProgressCount.textContent = `${groceryChecked.length}/${groceryCheckboxes.length} items`;
+      }
+      
+      // Trackers progress
+      const trackerCheckboxes = document.querySelectorAll('#trackers input[type="checkbox"]');
+      const trackerChecked = document.querySelectorAll('#trackers input[type="checkbox"]:checked');
+      const trackerProgressBar = document.getElementById('tracker-progress-bar');
+      const trackerProgressCount = document.getElementById('tracker-progress-count');
+      
+      if (trackerProgressBar && trackerProgressCount) {
+        const trackerPercentage = trackerCheckboxes.length > 0 ? (trackerChecked.length / trackerCheckboxes.length) * 100 : 0;
+        trackerProgressBar.style.width = trackerPercentage + '%';
+        trackerProgressCount.textContent = `${trackerChecked.length}/${trackerCheckboxes.length} complete`;
+      }
+    }
+
+    // Initialize calendar
+    function initializeCalendar() {
+      const calendarGrid = document.getElementById('calendar-grid');
+      if (!calendarGrid) return;
+      
+      const workoutTypes = ['rest', 'full-body', 'cardio', 'lower', 'recovery', 'upper', 'optional'];
+      const colors = ['bg-gray-200', 'bg-red-200', 'bg-blue-200', 'bg-green-200', 'bg-yellow-200', 'bg-yellow-200', 'bg-purple-200'];
+      
+      // Generate 84 days (12 weeks)
+      for (let i = 1; i <= 84; i++) {
+        const dayElement = document.createElement('div');
+        dayElement.className = `p-2 text-center text-sm border border-slate-100 ${colors[i % 7]} cursor-pointer hover:opacity-80 rounded`;
+        dayElement.textContent = i;
+        dayElement.title = `Day ${i} - ${workoutTypes[i % 7]}`;
+        calendarGrid.appendChild(dayElement);
+      }
+    }
+
     // Initialize app
     document.addEventListener('DOMContentLoaded', function() {
       loadState();
       initializeUI();
+      initializeCalendar();
       setupEventListeners();
       updateTodayWorkout();
       updateHabits();
       updateWaterTracker();
       updateGroceryProgress();
+      
+      // Restore new tab states
+      if (appState.newTabData) {
+        Object.keys(appState.newTabData).forEach(checkboxId => {
+          const checkbox = document.getElementById(checkboxId);
+          if (checkbox) {
+            checkbox.checked = appState.newTabData[checkboxId];
+          }
+        });
+      }
+      
+      // Restore measurements
+      if (appState.measurements) {
+        Object.keys(appState.measurements).forEach(inputId => {
+          const input = document.getElementById(inputId);
+          if (input) {
+            input.value = appState.measurements[inputId];
+          }
+        });
+      }
+      
+      updateNewTabProgress();
       checkDailyReset();
     });
 
@@ -590,6 +1256,7 @@
         saveState();
         updateHabits();
         updateWaterTracker();
+        updateNewTabProgress();
       }
     }
 
@@ -642,6 +1309,31 @@
       // Grocery items
       document.querySelectorAll('.grocery-item').forEach(item => {
         item.addEventListener('change', updateGroceryProgress);
+      });
+      
+      // New tab checkboxes
+      document.querySelectorAll('#weekly-plan input[type="checkbox"], #grocery input[type="checkbox"], #trackers input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+          const checkboxId = this.id;
+          const isChecked = this.checked;
+          
+          // Save state
+          if (!appState.newTabData) appState.newTabData = {};
+          appState.newTabData[checkboxId] = isChecked;
+          saveState();
+          
+          // Update progress
+          updateNewTabProgress();
+        });
+      });
+      
+      // Measurement inputs
+      document.querySelectorAll('#trackers input[type="number"]').forEach(input => {
+        input.addEventListener('input', function() {
+          if (!appState.measurements) appState.measurements = {};
+          appState.measurements[this.id] = this.value;
+          saveState();
+        });
       });
     }
 
