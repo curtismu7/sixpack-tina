@@ -11,25 +11,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    html { 
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
     
     /* Mobile-first touch targets */
     .touch-target { min-height: 48px; min-width: 48px; }
     
     /* Custom progress bar */
     .progress-bar {
-      background: linear-gradient(90deg, #ec4899 var(--progress, 0%), #f1f5f9 var(--progress, 0%));
+      background: linear-gradient(90deg, #667eea var(--progress, 0%), #e2e8f0 var(--progress, 0%));
       transition: all 0.3s ease;
     }
     
     /* Timer states */
-    .timer-workout { background: #dc2626; color: white; }
-    .timer-rest { background: #16a34a; color: white; }
+    .timer-workout { background: #667eea; color: white; }
+    .timer-rest { background: #10b981; color: white; }
     
     /* Mobile menu slide */
     .mobile-menu {
       transform: translateX(-100%);
       transition: transform 0.3s ease;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
     }
     .mobile-menu.open {
       transform: translateX(0);
@@ -41,109 +52,196 @@
       bottom: 20px;
       right: 20px;
       z-index: 50;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
     }
     
     /* Tab content */
     .tab-content { display: none; }
     .tab-content.active { display: block; }
     
+    /* Tab buttons */
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .tab-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+    .tab-btn.active {
+      background: rgba(255, 255, 255, 0.9);
+      color: #667eea;
+      font-weight: 600;
+    }
+    
+    /* Glass morphism cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Header glass effect */
+    .header-glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Content cards */
+    .content-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Progress bars */
+    .progress-gradient {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    /* Checkbox styling */
+    input[type="checkbox"]:checked {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-color: #667eea;
+    }
+    
+    /* Button gradients */
+    .btn-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    }
+    
+    /* Download buttons */
+    .download-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+    }
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Water glasses */
+    .water-glass {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
+    .water-glass:hover {
+      transform: scale(1.1);
+    }
+    
     /* Print tweaks */
     @media print {
       .no-print { display: none !important; }
       .fab { display: none !important; }
       .mobile-menu { display: none !important; }
+      html, body { background: white !important; }
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-slate-50 to-white text-slate-900">
+<body class="text-white min-h-screen">
   
   <!-- Mobile Menu Overlay -->
   <div id="mobileMenuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden no-print"></div>
   
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu fixed left-0 top-0 h-full w-80 bg-white shadow-xl z-50 no-print">
-    <div class="p-4 border-b">
+  <div id="mobileMenu" class="mobile-menu fixed left-0 top-0 h-full w-80 shadow-xl z-50 no-print">
+    <div class="p-4 border-b border-white/20">
       <div class="flex items-center justify-between">
-        <h2 class="text-lg font-semibold">Quick Access</h2>
-        <button id="closeMobileMenu" class="p-2 hover:bg-gray-100 rounded-lg">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <h2 class="text-lg font-semibold text-gray-800">Quick Access</h2>
+        <button id="closeMobileMenu" class="p-2 hover:bg-white/20 rounded-lg transition-all">
+          <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
     </div>
     <div class="p-4 space-y-3 max-h-96 overflow-y-auto">
-      <button onclick="switchTab('tracker')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-pink-100 text-pink-700 rounded-lg flex items-center justify-center text-sm font-bold">T</span>
+      <button onclick="switchTab('tracker')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">T</span>
         Today's Tracker
       </button>
-      <button onclick="switchTab('program')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center text-sm font-bold">P</span>
+      <button onclick="switchTab('program')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">P</span>
         Program Overview
       </button>
-      <button onclick="switchTab('tools')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-green-100 text-green-700 rounded-lg flex items-center justify-center text-sm font-bold">🛠</span>
+      <button onclick="switchTab('tools')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">🛠</span>
         Interactive Tools
       </button>
-      <button onclick="switchTab('weekly-plan')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-purple-100 text-purple-700 rounded-lg flex items-center justify-center text-sm font-bold">W</span>
+      <button onclick="switchTab('weekly-plan')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-purple-400 to-indigo-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">W</span>
         Weekly Plan
       </button>
-      <button onclick="switchTab('quick-view')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-orange-100 text-orange-700 rounded-lg flex items-center justify-center text-sm font-bold">Q</span>
+      <button onclick="switchTab('quick-view')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-orange-400 to-red-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">Q</span>
         Quick View
       </button>
-      <button onclick="switchTab('calendar')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-red-100 text-red-700 rounded-lg flex items-center justify-center text-sm font-bold">📅</span>
+      <button onclick="switchTab('calendar')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-red-400 to-pink-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">📅</span>
         Calendar
       </button>
-      <button onclick="switchTab('grocery')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-yellow-100 text-yellow-700 rounded-lg flex items-center justify-center text-sm font-bold">🛒</span>
+      <button onclick="switchTab('grocery')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">🛒</span>
         Grocery
       </button>
-      <button onclick="switchTab('trackers')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-indigo-100 text-indigo-700 rounded-lg flex items-center justify-center text-sm font-bold">📊</span>
+      <button onclick="switchTab('trackers')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-indigo-400 to-purple-400 text-white rounded-lg flex items-center justify-center text-sm font-bold">📊</span>
         Trackers
       </button>
-      <button onclick="switchTab('downloads')" class="w-full text-left p-3 hover:bg-gray-100 rounded-lg flex items-center gap-3">
-        <span class="w-8 h-8 bg-gray-100 text-gray-700 rounded-lg flex items-center justify-center text-sm font-bold">📥</span>
+      <button onclick="switchTab('downloads')" class="w-full text-left p-3 hover:bg-white/20 rounded-xl flex items-center gap-3 transition-all text-gray-800">
+        <span class="w-8 h-8 bg-gradient-to-r from-gray-400 to-gray-600 text-white rounded-lg flex items-center justify-center text-sm font-bold">📥</span>
         Downloads
       </button>
     </div>
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-30 backdrop-blur bg-white/70 border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+  <header class="sticky top-0 z-30 header-glass">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-gray-100 rounded-lg no-print">
+        <button id="openMobileMenu" class="md:hidden p-2 hover:bg-white/20 rounded-lg no-print transition-all">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        <div class="w-9 h-9 rounded-2xl bg-pink-100 text-pink-700 grid place-content-center font-bold">TS</div>
+        <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-filter backdrop-blur-sm text-white grid place-content-center font-bold text-lg">TS</div>
         <div>
-          <h1 class="text-lg font-semibold leading-tight">Tina's Lean & Strong Program</h1>
-          <p class="text-xs text-slate-500">Interactive Tracker • Week <span id="currentWeek">1</span> of 12</p>
+          <h1 class="text-xl font-semibold leading-tight">Tina's Lean & Strong Program</h1>
+          <p class="text-sm text-white/80">Interactive Tracker • Week <span id="currentWeek">1</span> of 12</p>
         </div>
       </div>
       
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex gap-1 no-print overflow-x-auto">
-        <button onclick="switchTab('tracker')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="tracker">Today's Tracker</button>
-        <button onclick="switchTab('program')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="program">Program</button>
-        <button onclick="switchTab('tools')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="tools">Tools</button>
-        <button onclick="switchTab('weekly-plan')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="weekly-plan">Weekly Plan</button>
-        <button onclick="switchTab('quick-view')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="quick-view">Quick View</button>
-        <button onclick="switchTab('calendar')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="calendar">Calendar</button>
-        <button onclick="switchTab('grocery')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="grocery">Grocery</button>
-        <button onclick="switchTab('trackers')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="trackers">Trackers</button>
-        <button onclick="switchTab('downloads')" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg hover:bg-gray-100" data-tab="downloads">Downloads</button>
+      <nav class="hidden md:flex gap-2 no-print overflow-x-auto">
+        <button onclick="switchTab('tracker')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="tracker">Today's Tracker</button>
+        <button onclick="switchTab('program')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="program">Program</button>
+        <button onclick="switchTab('tools')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="tools">Tools</button>
+        <button onclick="switchTab('weekly-plan')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="weekly-plan">Weekly Plan</button>
+        <button onclick="switchTab('quick-view')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="quick-view">Quick View</button>
+        <button onclick="switchTab('calendar')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="calendar">Calendar</button>
+        <button onclick="switchTab('grocery')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="grocery">Grocery</button>
+        <button onclick="switchTab('trackers')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="trackers">Trackers</button>
+        <button onclick="switchTab('downloads')" class="tab-btn px-4 py-2 text-sm font-medium rounded-xl" data-tab="downloads">Downloads</button>
       </nav>
       
       <div class="flex gap-2 no-print">
-        <button onclick="window.print()" class="inline-flex items-center gap-2 rounded-2xl border border-slate-300 hover:bg-slate-50 px-4 py-2 text-sm font-medium touch-target">Print</button>
+        <button onclick="window.print()" class="inline-flex items-center gap-2 rounded-xl bg-white/20 hover:bg-white/30 px-4 py-2 text-sm font-medium touch-target transition-all">Print</button>
       </div>
     </div>
   </header>
@@ -156,7 +254,7 @@
       <div class="grid lg:grid-cols-2 gap-6">
         
         <!-- Today's Workout -->
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="content-card rounded-3xl p-6">
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-xl font-semibold">Today's Workout</h3>
             <span id="todayName" class="text-sm text-slate-500"></span>
@@ -167,7 +265,7 @@
         </div>
         
         <!-- Daily Habits -->
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="content-card rounded-3xl p-6">
           <h3 class="text-xl font-semibold mb-4">Daily Habits</h3>
           <div class="space-y-4">
             <div class="habit-item" data-habit="workout">
@@ -199,7 +297,7 @@
                 </div>
               </div>
               <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="waterProgress" class="bg-blue-500 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                <div id="waterProgress" class="progress-gradient h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
               </div>
             </div>
             
@@ -228,13 +326,13 @@
               <span id="habitProgress" class="text-sm text-slate-500">0/5 complete</span>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-3">
-              <div id="habitProgressBar" class="bg-pink-500 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+              <div id="habitProgressBar" class="progress-gradient h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
             </div>
           </div>
         </div>
         
         <!-- Personal Notes -->
-        <div class="lg:col-span-2 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="lg:col-span-2 content-card rounded-3xl p-6">
           <h3 class="text-xl font-semibold mb-4">Daily Notes</h3>
           <textarea 
             id="dailyNotes" 
@@ -258,7 +356,7 @@
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Get leaner, stronger, and more defined — <span class="text-pink-600">without heavy weights</span>.</h2>
             <p class="text-slate-600 mt-4">A simple weekly routine, high‑protein meals, and printable trackers. Joint‑friendly exercises, clear portions, and a calendar you can follow at a glance.</p>
           </div>
-          <div class="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
+          <div class="content-card rounded-3xl p-4">
             <dl class="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <dt class="text-slate-500">Calories (start)</dt>
@@ -286,7 +384,7 @@
         <div class="flex items-center justify-between mb-3">
           <h3 class="text-xl font-semibold">Weekly Plan (Meals + Workouts)</h3>
         </div>
-        <div class="overflow-x-auto rounded-3xl border border-slate-200 bg-white shadow-sm">
+        <div class="overflow-x-auto content-card rounded-3xl">
           <table class="w-full text-left text-sm">
             <thead class="bg-slate-50 text-slate-600">
               <tr>
@@ -372,13 +470,13 @@
             <div id="timerDisplay" class="text-6xl font-bold mb-4 font-mono">00:00</div>
             <div id="timerMode" class="text-lg font-medium mb-4 text-gray-600">Ready to Start</div>
             <div class="flex gap-3 justify-center">
-              <button id="startTimer" class="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium touch-target">Start</button>
-              <button id="pauseTimer" class="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-medium touch-target" disabled>Pause</button>
-              <button id="resetTimer" class="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium touch-target">Reset</button>
+              <button id="startTimer" class="btn-gradient px-6 py-3 rounded-xl font-medium touch-target">Start</button>
+              <button id="pauseTimer" class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl font-medium touch-target transition-all" disabled>Pause</button>
+              <button id="resetTimer" class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-xl font-medium touch-target transition-all">Reset</button>
             </div>
             <div class="mt-4 flex gap-2 justify-center">
-              <button id="workoutMode" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg text-sm font-medium touch-target">Workout (45s)</button>
-              <button id="restMode" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg text-sm font-medium touch-target">Rest (15s)</button>
+              <button id="workoutMode" class="px-4 py-2 bg-white/20 text-gray-700 rounded-xl text-sm font-medium touch-target hover:bg-white/30 transition-all">Workout (45s)</button>
+              <button id="restMode" class="px-4 py-2 bg-white/20 text-gray-700 rounded-xl text-sm font-medium touch-target hover:bg-white/30 transition-all">Rest (15s)</button>
             </div>
           </div>
         </div>
@@ -946,7 +1044,7 @@
                 <div class="text-sm text-slate-600">Opens as a PDF</div>
               </div>
             </div>
-            <a href="womens_master_playbook_with_calendar.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-lg text-sm font-medium transition-colors">
+            <a href="womens_master_playbook_with_calendar.pdf" target="_blank" class="download-btn inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M4 16l4.586-4.586a2 2 0 012.828 0L16 16"></path>
               </svg>
@@ -1061,15 +1159,15 @@
   </main>
 
   <!-- Floating Action Button -->
-  <button id="fabButton" class="fab w-14 h-14 bg-pink-600 hover:bg-pink-700 text-white rounded-full flex items-center justify-center no-print">
+  <button id="fabButton" class="fab w-14 h-14 text-white rounded-full flex items-center justify-center no-print hover:scale-110 transition-all duration-300">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
     </svg>
   </button>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-200 mt-12">
-    <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-slate-500 flex items-center justify-between">
+  <footer class="border-t border-white/20 mt-12 glass-card">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-sm text-white/80 flex items-center justify-between">
       <span>Interactive Fitness Tracker • Week <span id="footerWeek">1</span> of 12</span>
       <span>General guidance only — consult a professional before starting.</span>
     </div>
