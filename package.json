@@ -1,0 +1,14 @@
+{
+  "name": "tinas-lean-strong-program",
+  "version": "1.0.0",
+  "description": "A gentle, structured fitness plan with light-weight workouts and high-protein meals",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site - no build needed'",
+    "start": "vercel dev"
+  },
+  "keywords": ["fitness", "nutrition", "workout", "health"],
+  "author": "Tina's Program",
+  "license": "MIT"
+}
