@@ -63,9 +63,10 @@
     
     /* Tab buttons */
     .tab-btn {
-      padding: 12px 20px;
-      border-radius: 12px;
+      padding: 8px 12px;
+      border-radius: 10px;
       font-weight: 500;
+      font-size: 0.875rem;
       transition: all 0.3s;
       color: #ffffff;
       background: rgba(255, 255, 255, 0.2);
@@ -206,7 +207,7 @@
 
   <!-- Header -->
   <header class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border-b border-purple-200">
-    <div class="max-w-7xl mx-auto px-4 py-6">
+    <div class="max-w-full mx-auto px-6 py-6">
       <div class="flex items-center gap-3 mb-4">
         <button id="openMobileMenu" class="md:hidden p-2 hover:bg-white/20 rounded-lg no-print">
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,13 +222,13 @@
       </div>
       
       <!-- Tab Navigation -->
-      <nav class="flex flex-wrap gap-2 no-print">
+      <nav class="flex flex-wrap gap-1 no-print justify-center">
         <button onclick="switchTab('dashboard')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="dashboard">📊 Overview</button>
-        <button onclick="switchTab('tracker')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tracker">✅ Today's Tracker</button>
+        <button onclick="switchTab('tracker')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tracker">✅ Tracker</button>
         <button onclick="switchTab('program')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="program">📋 Program</button>
         <button onclick="switchTab('tools')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="tools">🛠 Tools</button>
-        <button onclick="switchTab('weekly-plan')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="weekly-plan">📅 Weekly Plan</button>
-        <button onclick="switchTab('quick-view')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="quick-view">⚡ Quick View</button>
+        <button onclick="switchTab('weekly-plan')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="weekly-plan">📅 Weekly</button>
+        <button onclick="switchTab('quick-view')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="quick-view">⚡ Quick</button>
         <button onclick="switchTab('calendar')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="calendar">🗓 Calendar</button>
         <button onclick="switchTab('grocery')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="grocery">🛒 Grocery</button>
         <button onclick="switchTab('trackers')" class="tab-btn bg-white/20 backdrop-blur-sm text-white hover:bg-white/30 border border-white/30" data-tab="trackers">📈 Trackers</button>
@@ -237,7 +238,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 py-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
+  <main class="max-w-full mx-auto px-6 py-6 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
     
     <!-- Dashboard Tab -->
     <div id="dashboard" class="tab-content active">
@@ -1863,7 +1864,7 @@
 
   <!-- Footer -->
   <footer class="border-t border-gray-100 mt-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-6 text-sm text-gray-500 text-center">
+    <div class="max-w-full mx-auto px-6 py-6 text-sm text-gray-500 text-center">
       <p>Interactive Fitness Tracker • General guidance only — consult a professional before starting.</p>
     </div>
   </footer>
